@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>PERROT COFFE LAND</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #f8f8f8; margin: 0; padding: 0; }
+    header { background-color: #6d4c41; color: white; padding: 20px; text-align: center; }
+    header img { width: 120px; border-radius: 50%; box-shadow: 0 0 10px #000; }
+    nav { background-color: #d7ccc8; padding: 10px; text-align: center; }
+    nav a { margin: 0 15px; text-decoration: none; color: #3e2723; font-weight: bold; }
+    .menu-section { padding: 20px; }
+    .item { background-color: white; margin: 10px 0; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px #ccc; }
+    .item h3 { margin: 0; }
+    .item button { background-color: #6d4c41; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+    #cart { background-color: #fff; padding: 20px; margin: 20px; border-radius: 8px; box-shadow: 0 0 5px #ccc; }
+    #cart ul { list-style: none; padding: 0; }
+    #cart li { margin-bottom: 10px; }
+    form input, form textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
+    form button { background-color: green; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    #confirmation { color: green; font-weight: bold; margin-top: 10px; }
+    #cryptoInfo { display: none; margin-top: 15px; background-color: #fff3e0; padding: 10px; border-radius: 8px; color: #3e2723; }
+    #cryptoInfo code { word-break: break-all; font-size: 14px; background: #eee; padding: 5px; border-radius: 5px; display: block; margin-top: 5px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.jpeg" alt="شعار PERROT">
+    <h1>PERROT COFFE LAND</h1>
+    <p>اختر طلبك بكل سهولة</p>
+  </header>
+
+  <nav>
+    <a href="#food">الأطعمة</a>
+    <a href="#drinks">المشروبات</a>
+    <a href="#desserts">الحلويات</a>
+    <a href="#cart">السلة</a>
+  </nav>
+
+  <div class="menu-section" id="food">
+    <h2>🍽️ الأطعمة</h2>
+    <div class="item">
+      <h3>شاورما دجاج</h3>
+      <p>سندويتش شاورما مع صوص خاص</p>
+      <button onclick="addToCart('شاورما دجاج')">أضف إلى السلة</button>
+    </div>
+    <div class="item">
+      <h3>بيتزا مارجريتا</h3>
+      <p>جبنة موزاريلا وطماطم طازجة</p>
+      <button onclick="addToCart('بيتزا مارجريتا')">أضف إلى السلة</button>
+    </div>
+  </div>
+
+  <div class="menu-section" id="drinks">
+    <h2>☕ المشروبات</h2>
+    <div class="item">
+      <h3>قهوة تركية</h3>
+      <p>قهوة قوية بطابع شرقي</p>
+      <button onclick="addToCart('قهوة تركية')">أضف إلى السلة</button>
+    </div>
+    <div class="item">
+      <h3>عصير برتقال طبيعي</h3>
+      <p>عصير طازج بدون إضافات</p>
+      <button onclick="addToCart('عصير برتقال طبيعي')">أضف إلى السلة</button>
+    </div>
+  </div>
+
+  <div class="menu-section" id="desserts">
+    <h2>🍰 الحلويات</h2>
+    <div class="item">
+      <h3>كنافة بالقشطة</h3>
+      <p>كنافة طرية مع قشطة وعسل</p>
+      <button onclick="addToCart('كنافة بالقشطة')">أضف إلى السلة</button>
+    </div>
+    <div class="item">
+      <h3>تشيز كيك الفراولة</h3>
+      <p>تشيز كيك مع صوص الفراولة</p>
+      <button onclick="addToCart('تشيز كيك الفراولة')">أضف إلى السلة</button>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>🛒 السلة</h2>
+    <ul id="cartItems"></ul>
+
+    <h3>📋 تأكيد الطلب</h3>
+    <form onsubmit="submitOrder(event)">
+      <input type="text" id="name" placeholder="الاسم الكامل" required>
+      <input type="tel" id="phone" placeholder="رقم الطاولة" required>
+      <textarea id="notes" placeholder="ملاحظات إضافية (اختياري)"></textarea>
+      <button type="submit">تأكيد الطلب</button>
+    </form>
+
+    <button onclick="payWithBinance()" style="background-color: #fbc02d; color: black; padding: 10px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+      💰 الدفع عبر Binance Pay
+    </button>
+
+    <button onclick="showCryptoInfo()" style="background-color: #ff9800; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+      💳 الدفع بالعملات الرقمية
+    </button>
+
+    <div id="cryptoInfo">
+      <strong>عنوان المحفظة (Ethereum ERC-20):</strong>
+      <code>0xac8cC9D8eC13410131bCc49d815cdC7e961C1564</code>
+      <p>يرجى إرسال المبلغ المطلوب إلى هذا العنوان، ثم تأكيد الدفع معنا عبر الهاتف أو واتساب.</p>
+    </div>
+    <p id="confirmation"></p>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cartItems');
+      cartList.innerHTML = '';
+      cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${item}`;
+        cartList.appendChild(li);
+      });
+    }
+
+    async function submitOrder(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const notes = document.getElementById('notes').value;
+
+      if (cart.length === 0) {
+        alert("السلة فارغة! أضف طلبات أولاً.");
+        return;
+      }
+
+      await sendTelegramNotification(name, phone, cart, notes);
+
+      document.getElementById('confirmation').textContent =
+        `شكرًا ${name}! تم استلام طلبك وسنتواصل معك على الرقم ${phone}.`;
+      cart = [];
+      updateCart();
+      event.target.reset();
+    }
+
+    function showCryptoInfo() {
+      document.getElementById('cryptoInfo').style.display = 'block';
+    }
+
+    function payWithBinance() {
+        const binancePayUrl = "https://pay.binance.com/en/pay?uuid=YOUR_UUID"; // ← استبدله برابطك الحقيقي
+        window.open(binancePayUrl, "_blank");
+      }
+          async function sendTelegramNotification(name, phone, items, notes) {
+      const token = "7520487943:AAEG5Qc6yBmOaeYhHUUpKPJ_nn2WYoaxWCg";
+      const chatId = "6796377271"; // ← هذا هو chat_id الخاص بك
+      const message = `🛎️ طلب جديد من ${name}\n📞 رقم الهاتف: ${phone}\n🧾 الأصناف: ${items.join(", ")}\n📝 ملاحظات: ${notes}`;
+
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+<section style="background-color:#fff8e1; padding:20px; margin:20px; border-radius:10px; box-shadow:0 0 5px #ccc;">
+  <h2 style="color:#6d4c41;">📖 كيف تقدم طلبك؟</h2>
+  <ol style="line-height:1.8; color:#3e2723;">
+    <li>📌 اختر المنتجات التي ترغب بها من الأقسام: الأطعمة، المشروبات، الحلويات.</li>
+    <li>🛒 اضغط على زر <strong>"أضف إلى السلة"</strong> لكل منتج تريده.</li>
+    <li>👤 أدخل اسمك ورقم الطاولة في نموذج الطلب الموجود أسفل السلة.</li>
+    <li>📝 أضف أي ملاحظات إضافية (اختياري).</li>
+    <li>✅ اضغط على زر <strong>"تأكيد الطلب"</strong> وسيصلك إشعار فوري إلى فريق الخدمة.</li>
+    <li>🍽️ سيتم تجهيز طلبك وتوصيله إلى طاولتك مباشرة.</li>
+  </ol>
+</section>
+<section style="background-color:#e3f2fd; padding:20px; margin:20px; border-radius:10px; box-shadow:0 0 5px #ccc;">
+  <h2 style="color:#0d47a1;">💡نصائح</h2>
+  <ul style="line-height:1.8; color:#3e2723;">
+    <li>📦 تأكد من مراجعة سلتك قبل تأكيد الطلب.</li>
+    <li>💬 لا تتردد في إضافة ملاحظات خاصة لطلبك.</li>
+    <li>⏰ حاول تقديم طلبك مسبقًا لتجنب الانتظار.</li>
+  </ul>
+</section>
