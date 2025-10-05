@@ -793,54 +793,79 @@
 </head>
 <body>
 
-<!-- HOLOGRAM SECTION -->
-<div class="holo-wrapper">
-  <div class="holo-stage">
-    <div class="holo-layer"></div>
-    <h1 class="holo-title">PERROT COFFE LAND</h1>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجري الرقمي</title>
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
 
-    <!-- 3D Food Plate -->
-    <div class="food-plate">
-      <div class="plate"></div>
-      <div class="food"></div>
-    </div>
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
 
-    <!-- 3D Coffee Cup -->
-    <div class="coffee-cup">
-      <div class="cup-body">
-        <div class="coffee"></div>
-        <div class="steam steam1"></div>
-        <div class="steam steam2"></div>
-        <div class="steam steam3"></div>
-      </div>
-      <div class="cup-handle"></div>
-    </div>
+    .logo {
+      width: 80px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
 
-    <div class="holo-menu">
-      <div class="holo-item">P'TIT DÉJ YAMMA 20 DT</div>
-      <div class="holo-item">FRAPPUCCINO 11 DT</div>
-      <div class="holo-item">MOJITO POWER 12 DT</div>
-      <div class="holo-item">CHOCOLATINES 11 DT</div>
-      <div class="holo-item">SPECIAL PERROT 13 DT</div>
-      <div class="holo-item">BIG LUNCH 130 DT</div>
-    </div>
+    header h1 {
+      margin: 0;
+    }
 
-    <!-- floating particles -->
-    <div class="holo-particle" style="top:15%;left:10%;width:50px;height:50px;animation-duration:5s"></div>
-    <div class="holo-particle" style="bottom:20%;right:15%;width:70px;height:70px;animation-duration:7s;animation-direction:alternate-reverse"></div>
-    <div class="holo-particle" style="top:30%;left:25%;width:40px;height:40px;animation-duration:6s"></div>
-  </div>
-  <div class="scan-lines"></div>
-</div>
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
 
-  <nav>
-    <a href="#food">P'TITS DÉJ</a>
-    <a href="#drinks">DRINKS</a>
-    <a href="#COFFEE">COFFEE</a>
-    <a href="#JUS FRAIS">JUS FRAIS</a>
-    <a href="#DÉLICE CHEESE-CAKE SAN SEBASTIEN">DÉLICE </a>
-    <a href="#cart">السلة</a>
-  </nav>
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* بقية ستايل الكود كما في النسخة الكاملة ... */
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.ibb.co/8kcxzsW/Chat-GPT-Image-19-sept-2025-18-41-19.png"
+         alt="Logo" class="logo">
+    <h1>🌿PERROT COFFEE LAND  </h1>
+    <nav>
+      <ul>
+        <li><a href="#cart">سلة🛒</a></li>
+        <li><a href="#food">P'TITS DÉJ</a></li>
+        <li><a href="#COFFEE">COFFEE</a></li>
+        <li><a href="#drinks">DRINKS</a></li>
+        <li><a href="#JUS FRAIS">JUS FRAIS</a></li>
+        <li><a href="#DÉLICE CHEESE-CAKE SAN SEBASTIEN">DÉLICE </a></li>
+        <li><a href="#GAUFERES">GAUFERES</a></li>
+        
+
+      </ul>
+    </nav>
+  </header>
+
+</body>
+</html>
   <div class="menu-section" id="food">
     <h2>🍽️ الأطعمة</h2>
     <div class="item">
@@ -1414,12 +1439,225 @@ Ajouter</h4>
     </div>
   </div>
 
+       <div class="menu-section" id="DÉLICE CHEESE-CAKE SAN SEBASTIEN">
+    <h2>CHEESE-CAKE SAN SEBASTIEN</h2>
+    <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>CHEESE CAKE SAINT SÉBASTIEN CHOCOLAT, FRUITS SECS 12 DT</h3>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN CHOCOLAT, FRUITS SECS 12 DT', -1)">−</button>
+        <span id="qty-CHEESE CAKE SAINT SÉBASTIEN CHOCOLAT, FRUITS SECS 12 DT">1</span>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN CHOCOLAT, FRUITS SECS 12 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('CHEESE CAKE SAINT SÉBASTIEN CHOCOLAT, FRUITS SECS 12 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>CHEESE CAKE SAINT SÉBASTIEN NUTELLA , FRUITS SECS 14 DT</h3>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN NUTELLA , FRUITS SECS 14 DT', -1)">−</button>
+        <span id="qty-CHEESE CAKE SAINT SÉBASTIEN NUTELLA , FRUITS SECS 14 DT">1</span>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN NUTELLA , FRUITS SECS 14 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('CHEESE CAKE SAINT SÉBASTIEN NUTELLA , FRUITS SECS 14 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>CHEESE CAKE SAINT SÉBASTIEN RAFAELLO, FRUITS SECS 15 DT</h3>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN RAFAELLO, FRUITS SECS 15 DT', -1)">−</button>
+        <span id="qty-CHEESE CAKE SAINT SÉBASTIEN RAFAELLO, FRUITS SECS 15 DT">1</span>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN RAFAELLO, FRUITS SECS 15 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('CHEESE CAKE SAINT SÉBASTIEN RAFAELLO, FRUITS SECS 15 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>CHEESE CAKE SAINT SÉBASTIEN FERRERO ROCHER, FRUITS SECS 16 DT</h3>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN FERRERO ROCHER, FRUITS SECS 16 DT', -1)">−</button>
+        <span id="qty-CHEESE CAKE SAINT SÉBASTIEN FERRERO ROCHER, FRUITS SECS 16 DT">1</span>
+        <button onclick="changeQty('CHEESE CAKE SAINT SÉBASTIEN FERRERO ROCHER, FRUITS SECS 16 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('CHEESE CAKE SAINT SÉBASTIEN FERRERO ROCHER, FRUITS SECS 16 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+   <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>JWAJEM 10.5 DT</h3>
+        <button onclick="changeQty('JWAJEM 10.5 DT', -1)">−</button>
+        <span id="qty-JWAJEM 10.5 DT">1</span>
+        <button onclick="changeQty('JWAJEM 10.5 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('JWAJEM 10.5 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+   <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>JWAJEM MAXI 14 DT</h3>
+        <button onclick="changeQty('JWAJEM MAXI 14 DT', -1)">−</button>
+        <span id="qty-JWAJEM MAXI 14 DT">1</span>
+        <button onclick="changeQty('JWAJEM MAXI 14 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('JWAJEM MAXI 14 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+             <div class="menu-section" id="GAUFERES">
+    <h2>SALÉES</h2>
+    <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES FROMAGE JAMBON 3 SAUCES 10 DT</h3>
+        <button onclick="changeQty('GAUFRES FROMAGE JAMBON 3 SAUCES 10 DT', -1)">−</button>
+        <span id="qty-GAUFRES FROMAGE JAMBON 3 SAUCES 10 DT">1</span>
+        <button onclick="changeQty('GAUFRES FROMAGE JAMBON 3 SAUCES 10 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES FROMAGE JAMBON 3 SAUCES 10 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+      <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES FROMAGE JAMBON THON 3 SAUCES 12 DT</h3>
+        <button onclick="changeQty('GAUFRES FROMAGE JAMBON THON 3 SAUCES 12 DT', -1)">−</button>
+        <span id="qty-GAUFRES FROMAGE JAMBON THON 3 SAUCES 12 DT">1</span>
+        <button onclick="changeQty('GAUFRES FROMAGE JAMBON THON 3 SAUCES 12 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES FROMAGE JAMBON THON 3 SAUCES 12 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+      <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES FROMAGE THON 3 SAUCES 11 DT</h3>
+        <button onclick="changeQty('GAUFRES FROMAGE THON 3 SAUCES 11 DT', -1)">−</button>
+        <span id="qty-GAUFRES FROMAGE THON 3 SAUCES 11 DT">1</span>
+        <button onclick="changeQty('GAUFRES FROMAGE THON 3 SAUCES 11 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES FROMAGE THON 3 SAUCES 11 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+      <h2>SUCRÉES</h2>
+    <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES CHOCOLAT FRUITS SECS 10 DT</h3>
+        <button onclick="changeQty('GAUFRES CHOCOLAT FRUITS SECS 10 DT', -1)">−</button>
+        <span id="qty-GAUFRES CHOCOLAT FRUITS SECS 10 DT">1</span>
+        <button onclick="changeQty('GAUFRES CHOCOLAT FRUITS SECS 10 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES CHOCOLAT FRUITS SECS 10 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+      <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES NUTELLA BANANE FRUITS SECS 13 DT</h3>
+        <button onclick="changeQty('GAUFRES NUTELLA BANANE FRUITS SECS 13 DT', -1)">−</button>
+        <span id="qty-GAUFRES NUTELLA BANANE FRUITS SECS 13 DT">1</span>
+        <button onclick="changeQty('GAUFRES NUTELLA BANANE FRUITS SECS 13 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES NUTELLA BANANE FRUITS SECS 13 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+  
+      <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES CHOCOLAT BANANE FRUIT SSEC 11 DT</h3>
+        <button onclick="changeQty('GAUFRES CHOCOLAT BANANE FRUIT SEC 11 DT', -1)">−</button>
+        <span id="qty-GAUFRES CHOCOLAT BANANE FRUIT SEC 11 DT">1</span>
+        <button onclick="changeQty('GAUFRES CHOCOLAT BANANE FRUIT SEC 11 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES CHOCOLAT BANANE FRUIT SEC 11 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+
+      <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>GAUFRES SPÉCIAL PERRO 15 DT</h3>
+        <button onclick="changeQty('GAUFRES SPÉCIAL PERRO 15 DT', -1)">−</button>
+        <span id="qty-GAUFRES SPÉCIAL PERRO 15 DT">1</span>
+        <button onclick="changeQty('GAUFRES SPÉCIAL PERRO 15 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('GAUFRES SPÉCIAL PERRO 15 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+     <h2>BOULE & BOULE CHOCOLAT FRUITS SECS 1 SWEET'S</h2>
+    <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>10PIÈCES CHOCOLAT 12 DT</h3>
+        <button onclick="changeQty('10PIÈCES CHOCOLAT 12 DT', -1)">−</button>
+        <span id="qty-10PIÈCES CHOCOLAT 12 DT">1</span>
+        <button onclick="changeQty('10PIÈCES CHOCOLAT 12 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('10PIÈCES CHOCOLAT 12 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+      <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>23PIÈCES CHOCOLAT 23 DT</h3>
+        <button onclick="changeQty('23PIÈCES CHOCOLAT 23 DT', -1)">−</button>
+        <span id="qty-23PIÈCES CHOCOLAT 23 DT">1</span>
+        <button onclick="changeQty('23PIÈCES CHOCOLAT 23 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('23PIÈCES CHOCOLAT 23 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+     <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>18PIÈCES CHOCOLAT 20 DT</h3>
+        <button onclick="changeQty('18PIÈCES CHOCOLAT 20 DT', -1)">−</button>
+        <span id="qty-18PIÈCES CHOCOLAT 20 DT">1</span>
+        <button onclick="changeQty('18PIÈCES CHOCOLAT 20 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('18PIÈCES CHOCOLAT 20 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+      <h2>BOULE & BOULE NUTELLA FRUITS SECS 1 SWEET'S</h2>
+    <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>10PIÈCES NUTELLA 14 DT</h3>
+        <button onclick="changeQty('10PIÈCES NUTELLA 14 DT', -1)">−</button>
+        <span id="qty-10PIÈCES NUTELLA 14 DT">1</span>
+        <button onclick="changeQty('10PIÈCES NUTELLA 14 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('10PIÈCES NUTELLA 14 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+   <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>23PIÈCES 25 DT</h3>
+        <button onclick="changeQty('23PIÈCES 25 DT', -1)">−</button>
+        <span id="qty-23PIÈCES 25 DT">1</span>
+        <button onclick="changeQty('23PIÈCES 25 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('23PIÈCES 25 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+   <div class="item">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h3>18PIÈCES 22 DT</h3>
+        <button onclick="changeQty('18PIÈCES 22 DT', -1)">−</button>
+        <span id="qty-18PIÈCES 22 DT">1</span>
+        <button onclick="changeQty('18PIÈCES 22 DT', 1)">+</button>
+        <button onclick="addToCartWithQty('18PIÈCES 22 DT')">أضف إلى السلة</button>
+      </div>
+    </div>
+  </div>
+
+
+
   <div id="cart">
     <h2>🛒 السلة</h2>
     <ul id="cartItems"></ul>
    <form onsubmit="deleteFromCart(event)">
      <button type="submit">حذف من السلة</button>
     </form>
+
 
     <h3>📋 تأكيد الطلب</h3>
     <form onsubmit="submitOrder(event)">
@@ -2012,7 +2250,6 @@ Ajouter</h4>
 </head>
 <body>
 
-  <button class="theme-toggle" id="toggle-theme">🌓 تبديل الوضع الليلي</button>
  
 
   <script>
@@ -2139,5 +2376,161 @@ Ajouter</h4>
   </style>
 </head>
  
+<img src="https://i.ibb.co/8kcxzsW/Chat-GPT-Image-19-sept-2025-18-41-19.png" alt="Logo" class="logo">
 
- v
+<style>
+  .logo {
+    width: 120px;                /* حجم الشعار */
+    height: auto;
+    border-radius: 15px;         /* زوايا ناعمة */
+    animation: logoPulse 3s infinite ease-in-out;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 0 rgba(46, 125, 50, 0.5);
+  }
+
+  .logo:hover {
+    transform: scale(1.08);      /* تكبير بسيط عند المرور */
+  }
+
+  @keyframes logoPulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(76, 175, 80, 0.5);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(76, 175, 80, 0.7);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(76, 175, 80, 0.5);
+    }
+  }
+</style>
+ 
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>موقعي العصري الفخم 💫</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* 💎 إعداد عام */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo', sans-serif; }
+body {
+  min-height:100vh;
+  overflow-x:hidden;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color:#29643d;
+  perspective:1000px;
+}
+
+/* 🔥 حركة الخلفية */
+@keyframes gradientShift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* ✨ النصوص والعناوين */
+h1,h2,h3 { color:#00e676; text-align:center; text-shadow:0 0 10px rgba(0,255,180,0.8),0 0 20px rgba(0,255,180,0.5); margin:20px 0; }
+p { color:#cce; font-size:16px; line-height:1.7; margin-bottom:15px; text-shadow:0 0 2px #000; }
+
+/* 🔗 الروابط */
+a { color:#00e676; text-decoration:none; transition:0.3s; }
+a:hover { color:#1de9b6; text-shadow:0 0 8px rgba(0,255,180,0.6); }
+
+/* 🪄 الأزرار متوهجة */
+button, .btn {
+  background: linear-gradient(135deg,#00e676,#00bfa5);
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:15px;
+  cursor:pointer;
+  font-weight:600;
+  letter-spacing:0.5px;
+  transition: all 0.3s ease;
+  box-shadow:0 0 15px rgba(0,255,180,0.6),0 0 30px rgba(0,255,180,0.4) inset;
+}
+button:hover, .btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:0 0 30px rgba(0,255,180,0.9),0 0 50px rgba(0,255,180,0.6) inset;
+}
+
+/* 🧭 شريط التنقل */
+nav {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  padding:20px 0;
+  background: rgba(0,0,0,0.3);
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  text-shadow:0 0 8px rgba(0,255,180,0.5);
+  position: sticky;
+  top:0;
+  z-index:100;
+}
+nav a {
+  font-weight:700;
+  padding:8px 15px;
+  border-radius:12px;
+  transition:0.3s;
+}
+nav a:hover {
+  background: rgba(0,255,180,0.2);
+  box-shadow:0 0 12px rgba(0,255,180,0.6);
+}
+
+/* 🧱 الكروت Glassmorphism */
+.card {
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px;
+  padding:25px;
+  margin:40px auto;
+  width:90%;
+  max-width:350px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 8px 30px rgba(0,255,180,0.2);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+.card:hover { transform: translateY(-8px) rotateX(3deg) rotateY(3deg); box-shadow:0 12px 40px rgba(0,255,180,0.5); }
+
+/* 📦 الحاوية */
+.container { width:90%; max-width:1200px; margin:auto; padding:40px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+
+/* 🔻 الفوتر */
+footer {
+  background: rgba(0,0,0,0.4);
+  color:#aaa;
+  text-align:center;
+  padding:15px 0;
+  margin-top:40px;
+  font-size:14px;
+  border-top:1px solid rgba(255,255,255,0.2);
+}
+
+/* 📱 متجاوب */
+@media(max-width:768px){
+  h1{font-size:24px;}
+  .card{width:95%;}
+  nav{flex-direction:column; gap:15px;}
+}
+</style>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
