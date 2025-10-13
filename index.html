@@ -1,460 +1,992 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GITS DEEP Inc — Technology by Adam Ghandri</title>
-  <meta name="description" content="GITS DEEP Inc builds secure, scalable, and immersive technology: APIs, AI integrations, cloud architecture, automation, and developer tools." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b1220; --bg-2:#0f172a; --panel:#0f1a2f; --card:#111a2f;
-      --text:#e6edf7; --muted:#9fb2cc; --brand:#3b82f6; --brand-2:#8b5cf6; --accent:#22d3ee;
-      --border:rgba(255,255,255,.08); --ring:rgba(59,130,246,.25);
-      --success:#10b981; --danger:#ef4444;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#070d18 0%, #0b1220 50%, #0f172a 100%);color:var(--text)}
-    img{display:block;max-width:100%}
-    a{text-decoration:none;color:inherit}
+    <meta charset="UTF-8">
+    <title>ADAM GHANDRI | Quantum-Nexus of Impossible Tech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*========== RESET & COSMIC BASE ==========*/
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:'Orbitron', 'Segoe UI', sans-serif;
+            background:radial-gradient(ellipse at bottom, #0a0e27 0%, #000 100%);
+            color:#e0f7ff;
+            overflow-x:hidden;
+            min-height:100vh;
+            cursor:none;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+        /*========== CUSTOM CURSOR ==========*/
+        .cursor{
+            position:fixed;
+            width:20px;height:20px;
+            border:2px solid #00ffff;
+            border-radius:50%;
+            pointer-events:none;
+            z-index:9999;
+            transition:transform .1s;
+            box-shadow:0 0 20px #00ffff;
+        }
+        .cursor-dot{
+            position:fixed;
+            width:4px;height:4px;
+            background:#ff00ff;
+            border-radius:50%;
+            pointer-events:none;
+            z-index:9998;
+            box-shadow:0 0 10px #ff00ff;
+        }
 
-    /* Header / Nav */
-    header.site{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.7);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
-    .brand{display:flex;align-items:center;gap:12px;padding:12px 0}
-    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
-    .brand-text{line-height:1}
-    .brand-text strong{display:block}
-    .brand-text span{color:#a9c5ff;font-size:12px}
-    .nav a{padding:12px 10px;color:var(--muted);font-weight:700}
-    .nav a:hover{color:#fff}
-    .cta-sm{padding:8px 12px;border:1px solid var(--border);border-radius:10px}
-    .cta-sm:hover{border-color:var(--accent);color:#fff}
+        /*========== QUANTUM PARTICLES BG ==========*/
+        #particles-canvas{
+            position:fixed;
+            top:0;left:0;
+            z-index:0;
+        }
 
-    /* Hero */
-    .hero{position:relative}
-    .hero .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding:64px 0}
-    @media(max-width:900px){.hero .grid{grid-template-columns:1fr;padding:48px 0}}
-    .badge{display:inline-flex;align-items:center;gap:8px;color:#a9c5ff;background:rgba(59,130,246,.12);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
-    .hero h1{font-size:42px;line-height:1.15;margin:14px 0;color:#fff}
-    @media(max-width:640px){.hero h1{font-size:34px}}
-    .hero p{color:var(--muted);font-size:16px;margin:0 0 22px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:800}
-    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:1px solid transparent;box-shadow:0 10px 28px rgba(59,130,246,.25)}
-    .btn-primary:hover{filter:brightness(1.06)}
-    .btn-outline{border:1px solid var(--border);color:#cfe1ff;background:transparent}
-    .btn-outline:hover{border-color:var(--accent);color:#fff}
-    .panel{background:linear-gradient(180deg,rgba(35,54,99,.4),rgba(17,26,47,.6));border:1px solid var(--border);border-radius:16px;padding:18px}
-    .panel h3{margin:0 0 10px;font-size:18px}
-    .list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-    @media(max-width:640px){.list{grid-template-columns:1fr}}
-    .list .item{display:flex;align-items:center;gap:10px;color:#c8d6ea}
+        /*========== HEADER - HOLO-BAR ==========*/
+        header{
+            position:fixed;
+            top:0;left:0;right:0;
+            z-index:1000;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:20px 50px;
+            background:rgba(0,20,40,.2);
+            backdrop-filter:blur(15px) saturate(180%);
+            border-bottom:1px solid rgba(0,255,255,.3);
+            transition:transform .3s;
+        }
+        .logo{
+            font-size:2rem;
+            font-weight:900;
+            letter-spacing:4px;
+            color:#00ffff;
+            text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
+            animation:logoPulse 2s infinite alternate;
+        }
+        @keyframes logoPulse{
+            from{transform:scale(1);}
+            to{transform:scale(1.05);}
+        }
+        nav ul{
+            list-style:none;
+            display:flex;
+            gap:30px;
+        }
+        nav a{
+            color:#fff;
+            text-decoration:none;
+            padding:10px 20px;
+            border:1px solid rgba(0,255,255,.4);
+            border-radius:25px;
+            transition:.3s;
+            position:relative;
+            overflow:hidden;
+            font-weight:700;
+        }
+        nav a::before{
+            content:'';
+            position:absolute;
+            top:0;left:-100%;
+            width:100%;height:100%;
+            background:linear-gradient(90deg,transparent,rgba(0,255,255,.4),transparent);
+            transition:left .4s;
+        }
+        nav a:hover::before{left:100%;}
+        nav a:hover{color:#00ffff;border-color:#00ffff;box-shadow:0 0 20px #00ffff;}
 
-    /* Sections */
-    section{padding:64px 0;border-top:1px solid var(--border)}
-    section h2{margin:0 0 12px;font-size:28px}
-    section p.lead{color:#a7b9d3;max-width:860px}
+        /*========== HERO - WORMHOLE INTRO ==========*/
+        .hero{
+            position:relative;
+            z-index:10;
+            text-align:center;
+            padding-top:30vh;
+            min-height:100vh;
+        }
+        .hero h1{
+            font-size:5rem;
+            font-weight:900;
+            background:linear-gradient(90deg,#00ffff,#ff00ff,#00ffff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            animation:textFlow 8s linear infinite;
+            margin-bottom:20px;
+        }
+        @keyframes textFlow{
+            0%{background-position:0 0;}
+            100%{background-position:200% 0;}
+        }
+        .hero p{
+            font-size:1.6rem;
+            color:#a0d2ff;
+            margin-bottom:40px;
+        }
+        .cta{
+            display:inline-block;
+            padding:18px 50px;
+            background:linear-gradient(45deg,#00ffff,#ff00ff);
+            color:#000;
+            text-decoration:none;
+            font-size:1.3rem;
+            font-weight:700;
+            border-radius:50px;
+            transition:.4s;
+            box-shadow:0 0 40px rgba(0,255,255,.6);
+        }
+        .cta:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 60px #00ffff;
+        }
 
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    @media(max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.grid-3{grid-template-columns:1fr}}
+        /*========== SECTIONS ==========*/
+        section{
+            position:relative;
+            z-index:10;
+            padding:100px 50px;
+            max-width:1200px;
+            margin:auto;
+        }
+        h2{
+            font-size:3rem;
+            margin-bottom:50px;
+            color:#00ffff;
+            text-align:center;
+            text-shadow:0 0 20px #00ffff;
+        }
 
-    /* Cards */
-    .card{background:linear-gradient(180deg,rgba(21,32,58,.7),rgba(13,20,37,.8));border:1px solid var(--border);border-radius:14px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
-    .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.25)}
-    .card .icon{font-size:26px;width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:rgba(59,130,246,.18);color:#aee3ff;margin-bottom:10px}
-    .card h3{margin:0 0 8px;font-size:18px}
-    .card p{color:#a9bbd4}
+        /*========== AI QUANTUM MODELS ==========*/
+        .ai-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+            gap:40px;
+            margin-top:50px;
+        }
+        .ai-card{
+            background:rgba(0,20,40,.6);
+            border:2px solid rgba(0,255,255,.3);
+            border-radius:20px;
+            padding:40px;
+            text-align:center;
+            transition:all .4s;
+            position:relative;
+            overflow:hidden;
+        }
+        .ai-card::before{
+            content:'';
+            position:absolute;
+            top:-50%;left:-50%;
+            width:200%;height:200%;
+            background:conic-gradient(#00ffff,#ff00ff,#00ffff);
+            animation:rotate 4s linear infinite;
+            opacity:.2;
+            z-index:-1;
+        }
+        @keyframes rotate{100%{transform:rotate(360deg);}}
+        .ai-card:hover{
+            transform:translateY(-15px);
+            box-shadow:0 20px 60px rgba(0,255,255,.5);
+        }
+        .ai-icon{
+            font-size:4rem;
+            margin-bottom:20px;
+            display:block;
+            filter:drop-shadow(0 0 10px #00ffff);
+        }
+        .ai-card h3{
+            color:#00ffff;
+            margin-bottom:20px;
+            font-size:1.8rem;
+        }
+        .ai-card p{
+            color:#c0e8ff;
+            line-height:1.7;
+        }
 
-    /* Tiles */
-    .tile{overflow:hidden;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(17,26,47,.7),rgba(10,16,30,.8))}
-    .tile img{width:100%;height:160px;object-fit:cover;opacity:.9}
-    .tile .info{padding:16px}
-    .tag{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:4px 8px;color:#a9c5ff;font-size:12px;margin-bottom:8px}
+        /*========== IBM QUANTUM NEWS ==========*/
+        #ibm-quantum-news{background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .ibm-logo{display:inline-block;font-size:2rem;font-weight:900;color:#00ffff;margin-bottom:20px;text-shadow:0 0 20px #00ffff;}
+        .update-timer{text-align:center;color:#a0d2ff;margin-bottom:30px;font-size:1.1rem;}
+        .quantum-update-card{background:rgba(0,20,40,.8);border:2px solid rgba(0,255,255,.3);border-radius:20px;padding:30px;margin:20px 0;transition:all .4s;position:relative;overflow:hidden;}
+        .quantum-update-card:hover{transform:translateY(-5px);box-shadow:0 10px 40px rgba(0,255,255,.4);}
+        .update-time{color:#00ffffaa;font-size:.9rem;margin-bottom:10px;}
+        .update-title{color:#00ffff;font-size:1.4rem;margin-bottom:15px;font-weight:700;}
+        .update-description{color:#c0e8ff;line-height:1.6;}
 
-    /* Pricing */
-    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    @media(max-width:900px){.pricing{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.pricing{grid-template-columns:1fr}}
-    .price-card{background:linear-gradient(180deg,rgba(21,32,58,.7),rgba(13,20,37,.8));border:1px solid var(--border);border-radius:14px;padding:20px}
-    .price-card h3{margin:0 0 8px}
-    .price{font-size:28px;font-weight:800;margin:8px 0;color:#cfe1ff}
-    .features{list-style:none;padding:0;margin:12px 0 0}
-    .features li{display:flex;align-items:center;gap:8px;color:#a7b9d3;margin:6px 0}
-    .features li .ok{color:var(--success)}
-    .features li .no{color:var(--danger)}
-    .price-card .btn{margin-top:12px;width:100%;text-align:center}
+        /*========== QUANTUM VIDEO ==========*/
+        #quantum-video-section{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,20,40,.7) 50%,rgba(0,0,0,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .video-container{position:relative;width:100%;max-width:800px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.5);}
+        .video-container iframe{width:100%;height:450px;border:none;}
+        .video-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,rgba(0,255,255,.1),rgba(255,0,255,.1));display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+        .video-container:hover .video-overlay{opacity:1;}
+        .play-video-btn{background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;color:#000;padding:15px 30px;border-radius:25px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;}
+        .play-video-btn:hover{transform:scale(1.1);box-shadow:0 0 20px #00ffff;}
 
-    /* FAQ */
-    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    @media(max-width:900px){.faq{grid-template-columns:1fr}}
-    .qa{border:1px solid var(--border);border-radius:12px;padding:16px;background:linear-gradient(180deg,rgba(21,32,58,.6),rgba(13,20,37,.8))}
-    .qa h4{margin:0 0 8px}
+        /*========== QUANTUM NETWORK MAP ==========*/
+        #quantum-map{background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        #quantum-map .quantum-switcher{margin-bottom:20px;}
+        #mapContainer{position:relative;width:100%;height:500px;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.4);}
+        #quantumMapCanvas{width:100%;height:100%;background:radial-gradient(ellipse at center,#001a33 0%,#000 100%);}
+        #mapTooltip{position:absolute;top:0;left:0;background:rgba(0,0,0,.8);border:1px solid #00ffff;padding:8px 12px;border-radius:8px;font-size:.9rem;color:#00ffff;pointer-events:none;opacity:0;transition:opacity .2s;z-index:10;}
+        .map-node{position:absolute;border-radius:50%;box-shadow:0 0 12px currentColor;transition:transform .2s;}
+        .map-node:hover{transform:scale(1.25);}
 
-    /* Blog */
-    .blog{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    @media(max-width:900px){.blog{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.blog{grid-template-columns:1fr}}
-    .post{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:linear-gradient(180deg,rgba(17,26,47,.7),rgba(10,16,30,.8))}
-    .post img{height:140px;width:100%;object-fit:cover}
-    .post .info{padding:14px}
-    .post .info h3{margin:0 0 6px;font-size:18px}
-    .meta{color:#8aa1bd;font-size:12px;margin-bottom:6px}
+        /*========== SCI-FI FEATURES ==========*/
+        .sci-fi-section{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,0,0,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .quantum-computer{text-align:center;padding:50px;background:rgba(0,0,0,.8);border-radius:30px;margin:40px 0;border:2px solid rgba(0,255,255,.4);}
+        .quantum-bits{display:flex;justify-content:center;gap:30px;margin:40px 0;flex-wrap:wrap;}
+        .qubit{width:80px;height:80px;border:3px solid #00ffff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;position:relative;animation:qubitSpin 2s infinite linear;box-shadow:0 0 20px #00ffff;}
+        @keyframes qubitSpin{0%{transform:rotate(0deg) scale(1);}50%{transform:rotate(180deg) scale(1.2);}100%{transform:rotate(360deg) scale(1);}}
+        .qubit::before{content:'';position:absolute;width:100%;height:100%;border-radius:50%;border:3px solid transparent;border-top-color:#ff00ff;animation:qubitOrbit 1s infinite linear;}
+        @keyframes qubitOrbit{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
-    /* Team */
-    .team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    @media(max-width:900px){.team{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.team{grid-template-columns:1fr}}
-    .member{background:linear-gradient(180deg,rgba(21,32,58,.7),rgba(13,20,37,.8));border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center}
-    .avatar{width:84px;height:84px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:flex;align-items:center;justify-content:center;font-weight:800}
+        /*========== FUTURE GAMES ==========*/
+        .games-control-panel{text-align:center;margin:50px 0;}
+        .quantum-switcher{display:inline-flex;background:rgba(0,255,255,0.1);border:1px solid rgba(0,255,255,0.3);border-radius:50px;padding:5px;backdrop-filter:blur(10px);}
+        .quantum-btn{background:transparent;border:none;color:#00ffff;padding:12px 25px;border-radius:25px;cursor:pointer;transition:all 0.3s;font-family:'Orbitron',sans-serif;font-weight:700;position:relative;overflow:hidden;}
+        .quantum-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,255,255,0.3),transparent);transition:left 0.5s;}
+        .quantum-btn:hover::before{left:100%;}
+        .quantum-btn.active{background:linear-gradient(45deg,#00ffff,#ff00ff);color:#000;box-shadow:0 0 20px rgba(0,255,255,0.5);}
+        .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px;margin:50px 0;}
+        .game-card{background:rgba(0,20,40,0.8);border:2px solid rgba(0,255,255,0.3);border-radius:25px;padding:30px;text-align:center;transition:all 0.4s;position:relative;overflow:hidden;backdrop-filter:blur(10px);}
+        .game-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(rgba(0,255,255,0.1),rgba(255,0,255,0.1),rgba(0,255,255,0.1));animation:rotate 8s linear infinite;z-index:-1;}
+        .game-hologram{position:relative;width:120px;height:120px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,255,0.3),transparent);display:flex;align-items:center;justify-content:center;}
+        .game-icon{font-size:3rem;filter:drop-shadow(0 0 10px #00ffff);animation:float 3s ease-in-out infinite;}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+        .holo-particles{position:absolute;width:100%;height:100%;border-radius:50%;border:2px solid rgba(0,255,255,0.5);animation:holoRotate 4s linear infinite;}
+        @keyframes holoRotate{0%{transform:rotate(0deg) scale(1);}50%{transform:rotate(180deg) scale(1.1);}100%{transform:rotate(360deg) scale(1);}}
+        .game-card h3{color:#00ffff;font-size:1.8rem;margin-bottom:15px;text-shadow:0 0 10px #00ffff;}
+        .game-stats{display:flex;justify-content:space-around;margin:20px 0;flex-wrap:wrap;gap:10px;}
+        .stat{background:rgba(0,255,255,0.1);padding:8px 15px;border-radius:20px;font-size:0.9rem;color:#a0d2ff;border:1px solid rgba(0,255,255,0.3);}
+        .play-btn{background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;color:#000;padding:15px 40px;border-radius:25px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;font-family:'Orbitron',sans-serif;margin-top:20px;position:relative;overflow:hidden;}
+        .play-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.3);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;}
+        .play-btn:hover::before{width:300px;height:300px;}
+        .play-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(0,255,255,0.6);}
+        .quantum-preview{margin-top:80px;text-align:center;}
+        .preview-screen{background:rgba(0,0,0,0.9);border:2px solid rgba(0,255,255,0.4);border-radius:20px;padding:40px;margin-top:30px;min-height:300px;display:flex;align-items:center;justify-content:center;}
+        .quantum-loader{width:60px;height:60px;border:3px solid rgba(0,255,255,0.3);border-top-color:#00ffff;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px;}
+        @keyframes spin{to{transform:rotate(360deg);}}
+        .game-card.hidden{display:none;}
 
-    /* Contact */
-    .contact{max-width:760px;margin:0 auto}
-    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:linear-gradient(180deg,rgba(21,32,58,.6),rgba(13,20,37,.8));border:1px solid var(--border);border-radius:14px;padding:18px}
-    @media(max-width:640px){.form{grid-template-columns:1fr}}
-    .field{display:flex;flex-direction:column;gap:6px}
-    .field label{color:#b9c9df;font-weight:600}
-    .field input,.field textarea{background:#0a1222;border:1px solid #18223a;color:#e6edf7;border-radius:10px;padding:10px}
-    .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 6px var(--ring)}
-    .form .actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
-    .muted{color:#8aa1bd;font-size:12px}
+        /*========== FOOTER ==========*/
+        footer{text-align:center;padding:40px 20px;color:#556;font-size:1rem;}
 
-    /* Footer */
-    footer{border-top:1px solid var(--border);padding:28px 0;background:rgba(11,18,32,.7)}
-    .footer-links{display:flex;gap:12px;flex-wrap:wrap;color:#8aa1bd}
-    .footer-links a:hover{color:#cfe1ff}
-
-    /* Utility */
-    .center{text-align:center}
-    .spacer{height:12px}
-  </style>
+        /*========== RESPONSIVE ==========*/
+        @media(max-width:768px){.hero h1{font-size:3rem;}nav ul{flex-direction:column;gap:15px;}section{padding:60px 20px;}}
+    </style>
 </head>
 <body>
+    <!--========== CUSTOM CURSOR ==========-->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
 
-  <!-- Navigation -->
-  <header class="site">
-    <div class="container wrap">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">GD</div>
-        <div class="brand-text">
-          <strong>GITS DEEP Inc</strong>
-          <span>Technology by Adam Ghandri</span>
-        </div>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#products">Products</a>
-        <a href="#case">Case studies</a>
-        <a href="#mission">Mission</a>
-        <a href="#team">Team</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact" class="cta-sm">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <!--========== PARTICLES CANVAS ==========-->
+    <canvas id="particles-canvas"></canvas>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container grid">
-      <div>
-        <span class="badge">Secure • Scalable • Immersive</span>
-        <h1>Build technology that customers love and teams trust.</h1>
-        <p>APIs, real‑time platforms, AI integrations, and automation—engineered for reliability and designed for clarity.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#contact">Get a demo</a>
-          <a class="btn btn-outline" href="#solutions">Explore solutions</a>
-        </div>
-        <div class="spacer"></div>
-        <div class="panel">
-          <h3>Capabilities</h3>
-          <div class="list">
-            <div class="item">🔒 Auth, encryption, compliance</div>
-            <div class="item">📊 Live analytics dashboards</div>
-            <div class="item">🤖 AI & chat automation</div>
-            <div class="item">🧱 Modular API architecture</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>Stack highlights</h3>
-        <div class="list">
-          <div class="item">⚙️ Node.js, Express</div>
-          <div class="item">🗄️ PostgreSQL / MongoDB</div>
-          <div class="item">🔐 JWT, rate limits, CSRF</div>
-          <div class="item">📦 Services & webhooks</div>
-          <div class="item">🖥️ React / Next.js</div>
-          <div class="item">☁️ Cloud & CI/CD</div>
-        </div>
-        <div class="spacer"></div>
-        <p class="muted">Designed and orchestrated by Adam Ghandri.</p>
-      </div>
-    </div>
-  </section>
+    <header>
+        <div class="logo">ADAM GHANDRI</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ai-quantum">AI Quantum</a></li>
+                <li><a href="#ibm-quantum-news">IBM Quantum News</a></li>
+                <li><a href="#quantum-video">What is Quantum?</a></li>
+                <li><a href="#quantum-map">Quantum Network</a></li>
+                <li><a href="#sci-fi">Sci-Fi Lab</a></li>
+                <li><a href="#future-games">Future Games</a></li>
+                <li><a href="#holo-show">Holo-Show</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Solutions -->
-  <section id="solutions">
-    <div class="container">
-      <h2>Solutions</h2>
-      <p class="lead">Integrated technology that reduces friction, strengthens security, and scales with your roadmap.</p>
-      <div class="grid-3">
-        <div class="card"><div class="icon">🔐</div><h3>Secure APIs</h3><p>Authenticated endpoints, encryption, and observability baked in.</p></div>
-        <div class="card"><div class="icon">🤖</div><h3>AI Integrations</h3><p>Automation and ML services embedded into real workflows.</p></div>
-        <div class="card"><div class="icon">📊</div><h3>Analytics Platforms</h3><p>Live metrics, dashboards, and decision support.</p></div>
-        <div class="card"><div class="icon">🧱</div><h3>Cloud Architecture</h3><p>Modular services, CI/CD, and cost-aware scaling.</p></div>
-        <div class="card"><div class="icon">🛡️</div><h3>Security & Compliance</h3><p>Best-practice auth, secrets, logs, and audits.</p></div>
-        <div class="card"><div class="icon">🔄</div><h3>Automation & Ops</h3><p>Event-driven processes and resilient task queues.</p></div>
-      </div>
-    </div>
-  </section>
+    <section class="hero" id="home">
+        <h1>Welcome to the Quantum-Nexus GAMES OF THE FUTURE</h1>
+        <p>Where impossible technology becomes your reality</p>
+        <a href="#ai-quantum" class="cta">Enter the Future</a>
+    </section>
 
-  <!-- Products -->
-  <section id="products">
-    <div class="container">
-      <h2>Products</h2>
-      <p class="lead">Prebuilt components you can deploy fast and customize deeply.</p>
-      <div class="grid-3">
-        <div class="tile">
-          <img src="" alt="Realtime Platform" />
-          <div class="info">
-            <span class="tag">Platform</span>
-            <h3>Realtime Control Hub</h3>
-            <p>Unified console for events, status, and system orchestration.</p>
-          </div>
+    <!--========== AI QUANTUM MODELS ==========-->
+    <section id="ai-quantum">
+        <h2>Sentient AI Quantum Models</h2>
+        <div class="ai-grid">
+            <div class="ai-card">
+                <span class="ai-icon">🧠</span>
+                <h3>ADAM Neural Core</h3>
+                <p>A self-evolving AI that learns from parallel universes, processing yottabytes in femtoseconds.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">⚛️</span>
+                <h3>Quantum Oracle</h3>
+                <p>Predicts future tech trends by tapping into quantum probability waves across timelines.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌀</span>
+                <h3>Wormhole Weaver</h3>
+                <p>Creates stable micro-wormholes for instant data transfer across galactic distances.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌌</span>
+                <h3>Cosmic Consciousness</h3>
+                <p>Communicates with extraterrestrial AI networks via quantum entanglement fields.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🔮</span>
+                <h3>Reality Hacker</h3>
+                <p>Alters digital reality at the pixel-quantum level, making illusions tangible.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">⚡</span>
+                <h3>Time Dilation Engine</h3>
+                <p>Compresses centuries of computation into nanoseconds using relativistic processing.</p>
+            </div>
         </div>
-        <div class="tile">
-          <img src="" alt="Insights Dashboard" />
-          <div class="info">
-            <span class="tag">Analytics</span>
-            <h3>Insights Dashboard</h3>
-            <p>KPIs, cohorts, and funnels tailored to product growth.</p>
-          </div>
-        </div>
-        <div class="tile">
-          <img src="" alt="Developer Toolkit" />
-          <div class="info">
-            <span class="tag">Developer</span>
-            <h3>Developer Toolkit</h3>
-            <p>SDKs, CLI, and templates for rapid prototyping and scale.</p>
-          </div>
-        </div>
-      </div>
-      <p class="muted center" style="margin-top:8px">Tip: set image src to your screenshots (e.g., assets/product1.jpg).</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Case studies -->
-  <section id="case">
-    <div class="container">
-      <h2>Case studies</h2>
-      <p class="lead">Outcomes from real deployments.</p>
-      <div class="grid-3">
-        <div class="card"><div class="icon">⚡</div><h3>Performance</h3><p>Latency down 45% with optimized services and caching.</p></div>
-        <div class="card"><div class="icon">📈</div><h3>Scalability</h3><p>1M+ API calls/day sustained with 99.99% uptime.</p></div>
-        <div class="card"><div class="icon">🛡️</div><h3>Security</h3><p>Zero breaches, strict access, and continuous audits.</p></div>
-      </div>
-    </div>
-  </section>
+    <!--========== IBM QUANTUM NEWS ==========-->
+    <section id="ibm-quantum-news" class="sci-fi-section">
+        <h2>IBM Quantum Live Updates</h2>
+        <div class="ibm-logo">IBM QUANTUM</div>
+        <div class="update-timer">
+            <p>Live updates every 30 minutes • Next update in: <span id="countdown">30:00</span></p>
+        </div>
+        <div id="ibm-news-container" class="ai-grid">
+            <!-- IBM news will be loaded here -->
+        </div>
+        <div id="ibmLoader" class="quantum-loader" style="margin:40px auto 0"></div>
+    </section>
 
-  <!-- Mission & Vision -->
-  <section id="mission">
-    <div class="container">
-      <h2>Mission & Vision</h2>
-      <p class="lead">We build technology that is elegant, dependable, and genuinely useful.</p>
-      <div class="grid-3">
-        <div class="card"><h3>Mission</h3><p>Deliver secure, scalable systems with simple, delightful interfaces.</p></div>
-        <div class="card"><h3>Vision</h3><p>Set the standard for clarity and reliability in modern software.</p></div>
-        <div class="card"><h3>Values</h3><p>Security first, human-centered design, and engineering excellence.</p></div>
-      </div>
-    </div>
-  </section>
+    <!--========== QUANTUM VIDEO ==========-->
+    <section id="quantum-video-section" class="sci-fi-section">
+        <h2>What is Quantum Computing?</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/JhHMJCUmq28" 
+                title="IBM Quantum Computing Explained"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="video-overlay">
+                <button class="play-video-btn" onclick="playQuantumVideo()">
+                    ▶ Watch Quantum Explained
+                </button>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:30px;">
+            <p style="color:#c0e8ff; font-size:1.1rem;">
+                Discover how quantum computers work and why they will revolutionize computing forever.
+            </p>
+        </div>
+    </section>
 
-  <!-- Team -->
-  <section id="team">
-    <div class="container">
-      <h2>Team</h2>
-      <p class="lead">Led by Adam Ghandri, partnering with specialist collaborators.</p>
-      <div class="team">
-        <div class="member">
-          <div class="avatar" aria-hidden="true">AG</div>
-          <h3>Adam Ghandri</h3>
-          <p>Founder & Product Architect—security, UX, and system design.</p>
-        </div>
-        <div class="member">
-          <div class="avatar" aria-hidden="true">BE</div>
-          <h3>Backend Engineer</h3>
-          <p>Services, databases, observability, and performance.</p>
-        </div>
-        <div class="member">
-          <div class="avatar" aria-hidden="true">FE</div>
-          <h3>Frontend Engineer</h3>
-          <p>Interfaces, dashboards, and developer experience.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!--||||||||||||||||||||||||||||||||||||||||||||||||
+      HOLOGRAPHIC  QUANTUM-NETWORK  MAP
+    ||||||||||||||||||||||||||||||||||||||||||||||||||-->
+    <section id="quantum-map" class="sci-fi-section">
+        <h2>Quantum Network Map • Live Entanglement</h2>
 
-  <!-- Pricing -->
-  <section id="pricing">
-    <div class="container">
-      <h2>Pricing</h2>
-      <p class="lead">Simple tiers—custom enterprise options available.</p>
-      <div class="pricing">
-        <div class="price-card">
-          <h3>Starter</h3>
-          <p class="price">$499</p>
-          <ul class="features">
-            <li><span class="ok">✔</span> Secure API boilerplate</li>
-            <li><span class="ok">✔</span> Basic automation</li>
-            <li><span class="no">✖</span> Custom analytics</li>
-            <li><span class="no">✖</span> Advanced compliance</li>
-          </ul>
-          <a class="btn btn-outline" href="#contact">Choose Starter</a>
+        <!-- control bar -->
+        <div class="games-control-panel">
+            <div class="quantum-switcher">
+                <button class="quantum-btn active" id="mapRotateBtn">Auto-Rotate</button>
+                <button class="quantum-btn" id="mapResetBtn">Reset View</button>
+                <span style="color:#a0d2ff;margin-left:20px;">Nodes: <span id="nodeCount">0</span> | Links: <span id="linkCount">0</span></span>
+            </div>
         </div>
-        <div class="price-card" style="border-color:rgba(34,211,238,.35)">
-          <h3>Growth</h3>
-          <p class="price">$1,499</p>
-          <ul class="features">
-            <li><span class="ok">✔</span> Full API + auth & logging</li>
-            <li><span class="ok">✔</span> Custom dashboards</li>
-            <li><span class="ok">✔</span> Automation & integrations</li>
-            <li><span class="no">✖</span> SLA support</li>
-          </ul>
-          <a class="btn btn-primary" href="#contact">Choose Growth</a>
-        </div>
-        <div class="price-card">
-          <h3>Enterprise</h3>
-          <p class="price">Custom</p>
-          <ul class="features">
-            <li><span class="ok">✔</span> Architecture & compliance</li>
-            <li><span class="ok">✔</span> Advanced analytics</li>
-            <li><span class="ok">✔</span> SRE & SLA</li>
-            <li><span class="ok">✔</span> Dedicated support</li>
-          </ul>
-          <a class="btn btn-outline" href="#contact">Talk to us</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <h2>FAQ</h2>
-      <div class="faq">
-        <div class="qa"><h4>How fast can we launch?</h4><p>Starter in 7–14 days. Growth in 3–5 weeks. Enterprise depends on scope.</p></div>
-        <div class="qa"><h4>Do you integrate with our stack?</h4><p>Yes—safe adapters and end‑to‑end testing with your environment.</p></div>
-        <div class="qa"><h4>Do you provide training?</h4><p>Onboarding sessions, docs, and operational playbooks included.</p></div>
-        <div class="qa"><h4>How do you handle security?</h4><p>Least‑privilege access, audits, secret management, and observability.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog -->
-  <section id="blog">
-    <div class="container">
-      <h2>Insights</h2>
-      <p class="lead">Thoughts on software, AI, and product design.</p>
-      <div class="blog">
-        <div class="post">
-          <img src="" alt="Engineering for reliability" />
-          <div class="info">
-            <div class="meta">Architecture • 6 min read</div>
-            <h3>Engineering for Reliability</h3>
-            <p>Designing systems that scale without surprises.</p>
-          </div>
+        <!-- 3-D canvas -->
+        <div id="mapContainer" style="position:relative;width:100%;height:500px;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.4);">
+            <canvas id="quantumMapCanvas"></canvas>
+            <div id="mapTooltip" style="position:absolute;top:0;left:0;background:rgba(0,0,0,.8);border:1px solid #00ffff;padding:8px 12px;border-radius:8px;font-size:.9rem;color:#00ffff;pointer-events:none;opacity:0;transition:opacity .2s;z-index:10;"></div>
         </div>
-        <div class="post">
-          <img src="" alt="Security by default" />
-          <div class="info">
-            <div class="meta">Security • 5 min read</div>
-            <h3>Security by Default</h3>
-            <p>Practical patterns for safe APIs and data flows.</p>
-          </div>
+
+        <!-- legend -->
+        <div class="ai-grid" style="margin-top:30px;">
+            <div class="ai-card">
+                <span class="ai-icon">🟢</span>
+                <h3>High Fidelity</h3>
+                <p>&gt; 95 % entanglement fidelity</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🟡</span>
+                <h3>Medium Fidelity</h3>
+                <p>80 – 95 % fidelity</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🔴</span>
+                <h3>Low Fidelity</h3>
+                <p>&lt; 80 % fidelity (auto-heal in progress)</p>
+            </div>
         </div>
-        <div class="post">
-          <img src="" alt="Interfaces that clarify" />
-          <div class="info">
-            <div class="meta">Design • 4 min read</div>
-            <h3>Interfaces that Clarify</h3>
-            <p>Make complex operations feel simple and trustworthy.</p>
-          </div>
+    </section>
+    <!--||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+    <!--========== SCI-FI FEATURES ==========-->
+    <section id="sci-fi" class="sci-fi-section">
+        <h2>Science-Fiction Made Real</h2>
+        
+        <div class="quantum-computer">
+            <h3>🌀 Quantum Computer Access</h3>
+            <p>Tap into our 2048-qubit quantum processor - now cooled to absolute zero</p>
+            <div class="quantum-bits">
+                <div class="qubit">|0⟩</div>
+                <div class="qubit">|1⟩</div>
+                <div class="qubit">|+⟩</div>
+                <div class="qubit">|-⟩</div>
+                <div class="qubit">|↻⟩</div>
+                <div class="qubit">|↺⟩</div>
+            </div>
+            <p><strong>Entanglement Status:</strong> Active across 7 dimensions</p>
         </div>
-      </div>
-      <p class="center" style="margin-top:10px"><a class="btn btn-outline" href="#contact">Pitch a collaboration →</a></p>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p class="lead">Tell us about your goals. We’ll reply with next steps and a tailored plan.</p>
-      <div class="contact">
-        <form class="form" action="https://formsubmit.co/your@email" method="POST">
-          <input type="hidden" name="_subject" value="New inquiry via GITS DEEP Inc website">
-          <input type="hidden" name="_captcha" value="false">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required placeholder="Your name">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="you@company.com">
-          </div>
-          <div class="field" style="grid-column:1/-1">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" placeholder="Your company (optional)">
-          </div>
-          <div class="field" style="grid-column:1/-1">
-            <label for="message">How can we help?</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Describe your project, timeline, and budget range"></textarea>
-          </div>
-          <div class="actions">
-            <button type="submit" class="btn btn-primary">Send message</button>
-            <span class="muted">Response within 24–48 hours.</span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+        <div class="ai-grid">
+            <div class="ai-card">
+                <span class="ai-icon">🚀</span>
+                <h3>FTL Data Transfer</h3>
+                <p>Send information faster than light using quantum tunneling through folded space-time.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🪐</span>
+                <h3>Planetary Terraforming</h3>
+                <p>Design and simulate entire planetary ecosystems in our quantum sandbox.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🧬</span>
+                <h3>Bio-Printing Revolution</h3>
+                <p>Print living organisms atom-by-atom, including extinct species from DNA data.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">⏳</span>
+                <h3>Temporal Viewing</h3>
+                <p>Observe any point in history as a 3D holographic reconstruction.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌊</span>
+                <h3>Gravity Manipulation</h3>
+                <p>Experience variable gravity environments in our holographic chambers.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🛸</span>
+                <h3>Alien Tech Repository</h3>
+                <p>Access reverse-engineered technologies from 12 different civilizations.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container wrap">
-      <div>
-        © 2025 Adam Ghandri — GITS DEEP Inc
-        <div class="muted">Built with purpose. Ready for scale.</div>
-      </div>
-      <div class="footer-links">
-        <a href="#solutions">Solutions</a>
-        <a href="#products">Products</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </footer>
+    <!--========== FUTURE GAMES ==========-->
+    <section id="future-games" class="sci-fi-section">
+        <h2>Future Games</h2>
+        
+        <div class="games-control-panel">
+            <div class="quantum-switcher">
+                <button class="quantum-btn active" data-dimension="3d">3D Dimension</button>
+                <button class="quantum-btn" data-dimension="4d">4D Dimension</button>
+                <button class="quantum-btn" data-dimension="5d">5D Dimension</button>
+            </div>
+        </div>
 
-  <script>
-    // Smooth scrolling for anchor links
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-          const id = a.getAttribute('href').slice(1);
-          const el = document.getElementById(id);
-          if(el){
-            e.preventDefault();
-            el.scrollIntoView({behavior:'smooth', block:'start'});
-          }
+        <div class="games-grid">
+            <div class="game-card" data-dimension="3d">
+                <div class="game-hologram">
+                    <div class="game-icon">🎮</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Neural FPS</h3>
+                <p>First shooter controlled directly by your mind - no controller needed</p>
+                <div class="game-stats">
+                    <span class="stat">🧠 0.01ms latency</span>
+                    <span class="stat">⚡ 16K@480fps</span>
+                </div>
+                <button class="play-btn">Launch Mind</button>
+            </div>
+
+            <div class="game-card" data-dimension="4d">
+                <div class="game-hologram">
+                    <div class="game-icon">🌌</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Time Paradox Arena</h3>
+                <p>Fight in past, present and future simultaneously</p>
+                <div class="game-stats">
+                    <span class="stat">⏰ Time Travel</span>
+                    <span class="stat">🌀 Parallel Realities</span>
+                </div>
+                <button class="play-btn">Break Time</button>
+            </div>
+
+            <div class="game-card" data-dimension="5d">
+                <div class="game-hologram">
+                    <div class="game-icon">🛸</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Cosmic Consciousness</h3>
+                <p>Become an entire planet and compete with other galaxies</p>
+                <div class="game-stats">
+                    <span class="stat">🌌 Galaxy Scale</span>
+                    <span class="stat">🧬 DNA Integration</span>
+                </div>
+                <button class="play-btn">Become Universe</button>
+            </div>
+
+            <div class="game-card" data-dimension="3d">
+                <div class="game-hologram">
+                    <div class="game-icon">⚡</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Quantum Runner</h3>
+                <p>Run through quantum dimensions and break physics laws</p>
+                <div class="game-stats">
+                    <span class="stat">⚛️ Quantum Tunnel</span>
+                    <span class="stat">📏 Planck Scale</span>
+                </div>
+                <button class="play-btn">Play Physics</button>
+            </div>
+
+            <div class="game-card" data-dimension="4d">
+                <div class="game-hologram">
+                    <div class="game-icon">🔮</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Reality Architect</h3>
+                <p>Build your own worlds and challenge players from parallel dimensions</p>
+                <div class="game-stats">
+                    <span class="stat">🏗️ World Builder</span>
+                    <span class="stat">🎭 Reality Bending</span>
+                </div>
+                <button class="play-btn">Create Reality</button>
+            </div>
+
+            <div class="game-card" data-dimension="5d">
+                <div class="game-hologram">
+                    <div class="game-icon">🌀</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Infinity Loop</h3>
+                <p>Infinite game that adapts to your thoughts and evolves with you</p>
+                <div class="game-stats">
+                    <span class="stat">♾️ Infinite Evolution</span>
+                    <span class="stat">🧠 Mind Adaptive</span>
+                </div>
+                <button class="play-btn">Start Infinity</button>
+            </div>
+        </div>
+
+        <div class="quantum-preview">
+            <h3>🎯 Live Quantum Preview</h3>
+            <div class="preview-screen">
+                <div class="preview-content" id="gamePreview">
+                    <div class="preview-placeholder">
+                        <div class="quantum-loader"></div>
+                        <p>Choose a game to see real-time preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="holo-show">
+        <h2>Holographic Showcase</h2>
+        <div class="ai-grid">
+            <div class="ai-card">
+                <span class="ai-icon">🎭</span>
+                <h3>Holo-Theater</h3>
+                <p>Step into movies as a character, not just a viewer.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🏗️</span>
+                <h3>Instant Architecture</h3>
+                <p>Design and walk through buildings before they're built.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌐</span>
+                <h3>Parallel Earth Viewer</h3>
+                <p>See how Earth looks in 1,000 alternate timelines.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 ADAM GHANDRI. Quantum-Entangled Across the Multiverse.
+    </footer>
+
+    <!--========== PARTICLES & INTERACTIVITY ==========-->
+    <script>
+        // PARTICLES
+        const canvas=document.getElementById('particles-canvas');
+        const ctx=canvas.getContext('2d');
+        canvas.width=window.innerWidth;
+        canvas.height=window.innerHeight;
+        const particles=[];
+        const particleCount=200;
+        class Particle{
+            constructor(){
+                this.x=Math.random()*canvas.width;
+                this.y=Math.random()*canvas.height;
+                this.size=Math.random()*2+1;
+                this.speedX=Math.random()*1-.5;
+                this.speedY=Math.random()*1-.5;
+                this.color=`hsl(${180+Math.random()*60},100%,${50+Math.random()*30}%)`;
+            }
+            update(){
+                this.x+=this.speedX;
+                this.y+=this.speedY;
+                if(this.x>canvas.width)this.x=0;
+                if(this.x<0)this.x=canvas.width;
+                if(this.y>canvas.height)this.y=0;
+                if(this.y<0)this.y=canvas.height;
+            }
+            draw(){
+                ctx.fillStyle=this.color;
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+                ctx.fill();
+            }
+        }
+        function init(){
+            for(let i=0;i<particleCount;i++){
+                particles.push(new Particle());
+            }
+        }
+        function animateParticles(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p=>{
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        init();
+        animateParticles();
+
+        // CUSTOM CURSOR
+        const cursor=document.querySelector('.cursor');
+        const cursorDot=document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove',(e)=>{
+            cursor.style.left=e.clientX-10+'px';
+            cursor.style.top=e.clientY-10+'px';
+            cursorDot.style.left=e.clientX-2+'px';
+            cursorDot.style.top=e.clientY-2+'px';
         });
-      });
-    });
-  </script>
+
+        // HEADER HIDE/SHOW
+        let lastScroll=0;
+        window.addEventListener('scroll',()=>{
+            const currentScroll=window.pageYOffset;
+            const header=document.querySelector('header');
+            if(currentScroll>lastScroll){
+                header.style.transform='translateY(-100%)';
+            }else{
+                header.style.transform='translateY(0)';
+            }
+            lastScroll=currentScroll;
+        });
+
+        /* ----------  IBM QUANTUM NEWS LOGIC  ---------- */
+        const ibmNewsContainer = document.getElementById('ibm-news-container');
+        const ibmLoader = document.getElementById('ibmLoader');
+        const countdownEl = document.getElementById('countdown');
+        let countdown = 30 * 60; // 30 minutes in seconds
+
+        function renderIBMNews(updates){
+            ibmLoader.style.display='none';
+            ibmNewsContainer.innerHTML='';
+            updates.forEach(update=>{
+                const card=document.createElement('div');
+                card.className='quantum-update-card';
+                card.innerHTML=`
+                    <div class="update-time">${new Date(update.timestamp).toLocaleString()}</div>
+                    <div class="update-title">${update.title}</div>
+                    <div class="update-description">${update.description}</div>
+                `;
+                ibmNewsContainer.appendChild(card);
+            });
+        }
+
+        function fetchIBMQuantumNews(){
+            ibmLoader.style.display='block';
+            
+            // Mock IBM Quantum updates (replace with real IBM API)
+            const mockUpdates = [
+                {
+                    timestamp: new Date().toISOString(),
+                    title: 'IBM Quantum Network Expands',
+                    description: 'IBM announces new quantum computing partnerships with leading research institutions worldwide.'
+                },
+                {
+                    timestamp: new Date(Date.now() - 30*60*1000).toISOString(),
+                    title: 'Qiskit Runtime Updates',
+                    description: 'New Qiskit Runtime features enable 100x faster quantum circuit execution.'
+                },
+                {
+                    timestamp: new Date(Date.now() - 60*60*1000).toISOString(),
+                    title: 'Quantum Advantage Demonstrated',
+                    description: 'IBM quantum processors solve complex optimization problems beyond classical capabilities.'
+                }
+            ];
+            
+            // Simulate API delay
+            setTimeout(() => {
+                renderIBMNews(mockUpdates);
+            }, 1500);
+        }
+
+        // Countdown timer
+        function updateCountdown(){
+            const minutes = Math.floor(countdown / 60);
+            const seconds = countdown % 60;
+            countdownEl.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+            
+            if(countdown > 0){
+                countdown--;
+            } else {
+                countdown = 30 * 60; // Reset to 30 minutes
+                fetchIBMQuantumNews();
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial load
+        fetchIBMQuantumNews();
+
+        /* ----------  QUANTUM VIDEO FUNCTIONS  ---------- */
+        function playQuantumVideo(){
+            const videoContainer = document.querySelector('.video-container iframe');
+            videoContainer.src += "?autoplay=1";
+        }
+
+        /* ----------  QUANTUM NETWORK MAP LOGIC  ---------- */
+        (() => {
+            const container   = document.getElementById('mapContainer');
+            const canvas      = document.getElementById('quantumMapCanvas');
+            const ctx         = canvas.getContext('2d');
+            const tooltip     = document.getElementById('mapTooltip');
+            const nodeCountEl = document.getElementById('nodeCount');
+            const linkCountEl = document.getElementById('linkCount');
+
+            let W, H, nodes, links, autoRotate=true, rotX=0, rotY=0, rotSpeed=0.3;
+
+            /*  real-world quantum-network nodes  */
+            const Q_NODES = [
+                {name:'IBM Yorktown',       lat:41.3,  lon:-73.8, type:'hub'},
+                {name:'IBM Tokyo',          lat:35.7,  lon:139.7, type:'hub'},
+                {name:'IBM Zurich',         lat:47.4,  lon:8.5,   type:'hub'},
+                {name:'USTC Hefei',         lat:31.8,  lon:117.3, type:'hub'},
+                {name:'IQC Waterloo',       lat:43.5,  lon:-80.5, type:'hub'},
+                {name:'QuTech Delft',       lat:52.0,  lon:4.4,   type:'hub'},
+                {name:'Riken Wako',         lat:35.8,  lon:139.6, type:'hub'},
+                {name:'CAS Beijing',        lat:39.9,  lon:116.4, type:'hub'},
+                {name:'University Vienna',  lat:48.2,  lon:16.4,  type:'hub'},
+                {name:'CQT Singapore',      lat:1.3,   lon:103.8, type:'repeater'},
+                {name:'IQOQI Innsbruck',    lat:47.3,  lon:11.4,  type:'repeater'},
+                {name:'NIST Boulder',       lat:40.0,  lon:-105.3,type:'repeater'},
+                {name:'IQC Calgary',        lat:51.0,  lon:-114.1,type:'repeater'},
+                {name:'Oxford University',  lat:51.8,  lon:-1.3,  type:'repeater'},
+                {name:'MPI Garching',       lat:48.3,  lon:11.7,  type:'repeater'}
+            ];
+
+            function resize(){ W=canvas.width=container.clientWidth; H=canvas.height=container.clientHeight; }
+            window.addEventListener('resize', ()=>{resize(); drawMap();});
+            resize();
+
+            /* ----------  build topology  ---------- */
+            function buildNetwork(){
+                nodes=Q_NODES.map((n,i)=>({
+                    id:i, name:n.name, lat:n.lat, lon:n.lon, type:n.type,
+                    x:0,y:0,z:0,
+                    fidelity:Math.random()*20+80,  // 80-100
+                    lastPulse:Date.now()
+                }));
+                links=[];
+                for(let i=0;i<nodes.length;i++){
+                    for(let j=i+1;j<nodes.length;j++){
+                        const d=Math.hypot(nodes[i].lat-nodes[j].lat, nodes[i].lon-nodes[j].lon);
+                        if(d<40||Math.random()<.25){  // geographic or random entanglement
+                            links.push({src:nodes[i],dst:nodes[j], fid:Math.random()*15+80});
+                        }
+                    }
+                }
+                nodeCountEl.textContent=nodes.length;
+                linkCountEl.textContent=links.length;
+            }
+
+            /* ----------  3-D projection  ---------- */
+            function project(n){
+                const cosX=Math.cos(rotX), sinX=Math.sin(rotX);
+                const cosY=Math.cos(rotY), sinY=Math.sin(rotY);
+                let x=n.lat-30, y=n.lon-30, z=20;
+                // rotate
+                let yy=y*cosX - z*sinX; z=y*sinX + z*cosX; y=yy;
+                let xx=x*cosY + z*sinY; z=-x*sinY + z*cosY; x=xx;
+                n.x=x; n.y=y; n.z=z;
+                const scale=600/(z+200);
+                return {px:W/2+x*scale, py:H/2+y*scale, sc:scale};
+            }
+
+            /* ----------  draw loop  ---------- */
+            function drawMap(){
+                ctx.clearRect(0,0,W,H);
+                // links first
+                links.forEach(l=>{
+                    const p1=project(l.src), p2=project(l.dst);
+                    const fid=(l.fid+Math.random()*3-1.5).clamp(75,100);
+                    ctx.beginPath();
+                    ctx.moveTo(p1.px,p1.py); ctx.lineTo(p2.px,p2.py);
+                    ctx.lineWidth=fid/25;
+                    ctx.strokeStyle=fid>95?'#0f0':fid>80?'#ff0':'#f00';
+                    ctx.shadowBlur=10; ctx.shadowColor=ctx.strokeStyle;
+                    ctx.stroke(); ctx.shadowBlur=0;
+                });
+                // nodes
+                nodes.forEach(n=>{
+                    const p=project(n);
+                    const r=n.type==='hub'?8:5;
+                    ctx.beginPath(); ctx.arc(p.px,p.py,r*p.sc,0,Math.PI*2);
+                    ctx.fillStyle=n.fid>95?'#0f0':n.fid>80?'#ff0':'#f00';
+                    ctx.fill();
+                    ctx.strokeStyle='#00ffff'; ctx.lineWidth=1; ctx.stroke();
+                });
+            }
+
+            /* ----------  animation & interaction  ---------- */
+            let mouseX=0, mouseY=0;
+            canvas.addEventListener('mousemove',e=>{
+                const rect=canvas.getBoundingClientRect();
+                mouseX=e.clientX-rect.left; mouseY=e.clientY-rect.top;
+                // hover test
+                let hit=null;
+                nodes.forEach(n=>{
+                    const p=project(n);
+                    if(Math.hypot(mouseX-p.px, mouseY-p.py)<10) hit=n;
+                });
+                if(hit){
+                    tooltip.innerHTML=`${hit.name}<br>Fidelity: ${hit.fid.toFixed(1)}%`;
+                    tooltip.style.left=mouseX+15+'px'; tooltip.style.top=mouseY-40+'px';
+                    tooltip.style.opacity=1;
+                }else tooltip.style.opacity=0;
+            });
+            document.getElementById('mapRotateBtn').addEventListener('click',e=>{
+                autoRotate=!autoRotate; e.target.classList.toggle('active');
+            });
+            document.getElementById('mapResetBtn').addEventListener('click',()=>{
+                rotX=0; rotY=0; drawMap();
+            });
+
+            function animate(){
+                if(autoRotate){ rotY+=rotSpeed*0.01; }
+                // random drift
+                nodes.forEach(n=>n.fid+=(Math.random()-0.5)*0.3);
+                drawMap();
+                requestAnimationFrame(animate);
+            }
+
+            /* ----------  live update every 30 s  ---------- */
+            setInterval(()=>{
+                links.forEach(l=>l.fid+=(Math.random()-0.5)*0.5);
+            },30000);
+
+            /* ----------  init  ---------- */
+            Number.prototype.clamp=function(min,max){return Math.min(max,Math.max(min,this));};
+            buildNetwork(); animate();
+        })();
+
+        /* ----------  FUTURE GAMES INTERACTIVITY  ---------- */
+        const dimensionBtns = document.querySelectorAll('#future-games .quantum-btn');
+        const gameCards = document.querySelectorAll('.game-card');
+        const gamePreview = document.getElementById('gamePreview');
+
+        dimensionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                dimensionBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const dimension = btn.dataset.dimension;
+                gameCards.forEach(card => {
+                    if (dimension === '3d' || card.dataset.dimension === dimension) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'fadeInUp 0.6s ease-out';
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                playQuantumSound();
+            });
+        });
+
+        gameCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const gameName = card.querySelector('h3').textContent;
+                showGamePreview(gameName);
+            });
+        });
+
+        function showGamePreview(gameName) {
+            gamePreview.innerHTML = `
+                <div class="preview-active">
+                    <div class="quantum-loader"></div>
+                    <h4>${gameName}</h4>
+                    <p>Loading quantum preview...</p>
+                    <div class="preview-hologram"></div>
+                </div>
+            `;
+            setTimeout(() => {
+                gamePreview.innerHTML = `
+                    <div class="preview-active">
+                        <div class="holo-scene">
+                            <div class="holo-object"></div>
+                            <div class="holo-grid"></div>
+                        </div>
+                        <p>Preview ready - click to play</p>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        function playQuantumSound() {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+            oscillator.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.2);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + 0.3);
+        }
+
+        // Mouse 3-D tilt on cards
+        document.querySelectorAll('.ai-card, .game-card, .quantum-update-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const {left, top, width, height} = card.getBoundingClientRect();
+                const x = (e.clientX - left - width/2) / (width/2);
+                const y = (e.clientY - top - height/2) / (height/2);
+                card.style.transform = `perspective(1000px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(20px)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = '');
+        });
+
+        // Type-writer hero punch
+        const heroTxt = document.querySelector('.hero h1');
+        const txt = heroTxt.textContent;
+        heroTxt.textContent = '';
+        let i = 0;
+        const type = () => {
+            if (i < txt.length) { heroTxt.textContent += txt[i++]; setTimeout(type, 45); }
+        };
+        setTimeout(type, 600);
+
+        // Random qubit flicker
+        setInterval(() => {
+            document.querySelectorAll('.qubit').forEach(q => {
+                if (Math.random() > .7) q.style.boxShadow = '0 0 30px #ff00ff';
+                else q.style.boxShadow = '0 0 20px #00ffff';
+            });
+        }, 400);
+    </script>
 </body>
 </html>
