@@ -1,1197 +1,1302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ADAM GHANDRI | Quantum-Nexus of Impossible Tech</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<style>
-/*========== RESET & COSMIC BASE ==========*/
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{
-    font-family:'Orbitron','Segoe UI',sans-serif;
-    background:radial-gradient(ellipse at bottom,#0a0e27 0%,#000 100%);
-    color:#e0f7ff;
-    overflow-x:hidden;
-    min-height:100vh;
-    cursor:none;
-    touch-action:manipulation;
-}
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+    <meta charset="UTF-8">
+    <title>ADAM GHANDRI | Quantum-Nexus of Impossible Tech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*========== RESET & COSMIC BASE ==========*/
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:'Orbitron', 'Segoe UI', sans-serif;
+            background:radial-gradient(ellipse at bottom, #0a0e27 0%, #000 100%);
+            color:#e0f7ff;
+            overflow-x:hidden;
+            min-height:100vh;
+            cursor:none;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
-/*========== CUSTOM CURSOR ==========*/
-.cursor,.cursor-dot{position:fixed;width:20px;height:20px;border:2px solid #00ffff;border-radius:50%;pointer-events:none;z-index:9999;transition:transform .1s;box-shadow:0 0 20px #00ffff;}
-.cursor-dot{width:4px;height:4px;background:#ff00ff;box-shadow:0 0 10px #ff00ff;}
-@media (pointer:coarse){.cursor,.cursor-dot{display:none;}}
+        /*========== CUSTOM CURSOR ==========*/
+        .cursor{
+            position:fixed;
+            width:20px;height:20px;
+            border:2px solid #00ffff;
+            border-radius:50%;
+            pointer-events:none;
+            z-index:9999;
+            transition:transform .1s;
+            box-shadow:0 0 20px #00ffff;
+        }
+        .cursor-dot{
+            position:fixed;
+            width:4px;height:4px;
+            background:#ff00ff;
+            border-radius:50%;
+            pointer-events:none;
+            z-index:9998;
+            box-shadow:0 0 10px #ff00ff;
+        }
 
-/*========== PARTICLES BG ==========*/
-#particles-canvas{position:fixed;top:0;left:0;z-index:0;width:100%;height:100%;}
+        /*========== QUANTUM PARTICLES BG ==========*/
+        #particles-canvas{
+            position:fixed;
+            top:0;left:0;
+            z-index:0;
+        }
 
-/*========== HEADER - HOLO-BAR ==========*/
-header{
-    position:fixed;
-    top:0;left:0;right:0;
-    z-index:1000;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:12px 20px;
-    background:rgba(0,20,40,.2);
-    backdrop-filter:blur(15px) saturate(180%);
-    border-bottom:1px solid rgba(0,255,255,.3);
-    transition:transform .3s;
-}
-.logo{
-    font-size:1.5rem;
-    font-weight:900;
-    letter-spacing:2px;
-    color:#00ffff;
-    text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
-    animation:logoPulse 2s infinite alternate;
-}
-@keyframes logoPulse{from{transform:scale(1);}to{transform:scale(1.05);}}
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-}
-nav a{
-    color:#fff;
-    text-decoration:none;
-    padding:8px 14px;
-    border:1px solid rgba(0,255,255,.4);
-    border-radius:25px;
-    transition:.3s;
-    position:relative;
-    overflow:hidden;
-    font-weight:700;
-    white-space:nowrap;
-    font-size:.8rem;
-}
-nav a::before{
-    content:'';
-    position:absolute;
-    top:0;left:-100%;
-    width:100%;height:100%;
-    background:linear-gradient(90deg,transparent,rgba(0,255,255,.4),transparent);
-    transition:left .4s;
-}
-nav a:hover::before{left:100%;}
-nav a:hover{color:#00ffff;border-color:#00ffff;box-shadow:0 0 20px #00ffff;}
+        /*========== HEADER - HOLO-BAR ==========*/
+        header{
+            position:fixed;
+            top:0;left:0;right:0;
+            z-index:1000;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:20px 50px;
+            background:rgba(0,20,40,.2);
+            backdrop-filter:blur(15px) saturate(180%);
+            border-bottom:1px solid rgba(0,255,255,.3);
+            transition:transform .3s;
+        }
+        .logo{
+            font-size:2rem;
+            font-weight:900;
+            letter-spacing:4px;
+            color:#00ffff;
+            text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
+            animation:logoPulse 2s infinite alternate;
+        }
+        @keyframes logoPulse{
+            from{transform:scale(1);}
+            to{transform:scale(1.05);}
+        }
+        nav ul{
+            list-style:none;
+            display:flex;
+            gap:30px;
+        }
+        nav a{
+            color:#fff;
+            text-decoration:none;
+            padding:10px 20px;
+            border:1px solid rgba(0,255,255,.4);
+            border-radius:25px;
+            transition:.3s;
+            position:relative;
+            overflow:hidden;
+            font-weight:700;
+        }
+        nav a::before{
+            content:'';
+            position:absolute;
+            top:0;left:-100%;
+            width:100%;height:100%;
+            background:linear-gradient(90deg,transparent,rgba(0,255,255,.4),transparent);
+            transition:left .4s;
+        }
+        nav a:hover::before{left:100%;}
+        nav a:hover{color:#00ffff;border-color:#00ffff;box-shadow:0 0 20px #00ffff;}
 
-/*========== HERO - WORMHOLE INTRO ==========*/
-.hero{
-    position:relative;
-    z-index:10;
-    text-align:center;
-    padding-top:25vh;
-    min-height:100vh;
-    padding-left:20px;
-    padding-right:20px;
-}
-.hero h1{
-    font-size:2.4rem;
-    font-weight:900;
-    background:linear-gradient(90deg,#00ffff,#ff00ff,#00ffff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:textFlow 8s linear infinite;
-    margin-bottom:20px;
-}
-@keyframes textFlow{0%{background-position:0 0;}100%{background-position:200% 0;}}
-.hero p{
-    font-size:1.2rem;
-    color:#a0d2ff;
-    margin-bottom:30px;
-}
-.cta{
-    display:inline-block;
-    padding:14px 30px;
-    background:linear-gradient(45deg,#00ffff,#ff00ff);
-    color:#000;
-    text-decoration:none;
-    font-size:1rem;
-    font-weight:700;
-    border-radius:50px;
-    transition:.4s;
-    box-shadow:0 0 40px rgba(0,255,255,.6);
-}
-.cta:hover{transform:scale(1.1);box-shadow:0 0 60px #00ffff;}
+        /*========== HERO - WORMHOLE INTRO ==========*/
+        .hero{
+            position:relative;
+            z-index:10;
+            text-align:center;
+            padding-top:30vh;
+            min-height:100vh;
+        }
+        .hero h1{
+            font-size:5rem;
+            font-weight:900;
+            background:linear-gradient(90deg,#00ffff,#ff00ff,#00ffff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            animation:textFlow 8s linear infinite;
+            margin-bottom:20px;
+        }
+        @keyframes textFlow{
+            0%{background-position:0 0;}
+            100%{background-position:200% 0;}
+        }
+        .hero p{
+            font-size:1.6rem;
+            color:#a0d2ff;
+            margin-bottom:40px;
+        }
+        .cta{
+            display:inline-block;
+            padding:18px 50px;
+            background:linear-gradient(45deg,#00ffff,#ff00ff);
+            color:#000;
+            text-decoration:none;
+            font-size:1.3rem;
+            font-weight:700;
+            border-radius:50px;
+            transition:.4s;
+            box-shadow:0 0 40px rgba(0,255,255,.6);
+        }
+        .cta:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 60px #00ffff;
+        }
 
-/*========== SECTIONS ==========*/
-section{
-    position:relative;
-    z-index:10;
-    padding:60px 20px;
-    max-width:1200px;
-    margin:auto;
-}
-h2{
-    font-size:2rem;
-    margin-bottom:30px;
-    color:#00ffff;
-    text-align:center;
-    text-shadow:0 0 20px #00ffff;
-}
+        /*========== SECTIONS ==========*/
+        section{
+            position:relative;
+            z-index:10;
+            padding:100px 50px;
+            max-width:1200px;
+            margin:auto;
+        }
+        h2{
+            font-size:3rem;
+            margin-bottom:50px;
+            color:#00ffff;
+            text-align:center;
+            text-shadow:0 0 20px #00ffff;
+        }
 
-/*========== AI QUANTUM MODELS ==========*/
-.ai-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:25px;
-    margin-top:30px;
-}
-.ai-card{
-    background:rgba(0,20,40,.6);
-    border:2px solid rgba(0,255,255,.3);
-    border-radius:20px;
-    padding:25px;
-    text-align:center;
-    transition:all .4s;
-    position:relative;
-    overflow:hidden;
-}
-.ai-card::before{
-    content:'';
-    position:absolute;
-    top:-50%;left:-50%;
-    width:200%;height:200%;
-    background:conic-gradient(#00ffff,#ff00ff,#00ffff);
-    animation:rotate 4s linear infinite;
-    opacity:.2;
-    z-index:-1;
-}
-@keyframes rotate{100%{transform:rotate(360deg);}}
-.ai-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,255,255,.5);}
-.ai-icon{
-    font-size:3rem;
-    margin-bottom:15px;
-    display:block;
-    filter:drop-shadow(0 0 10px #00ffff);
-}
-.ai-card h3{
-    color:#00ffff;
-    margin-bottom:15px;
-    font-size:1.4rem;
-}
-.ai-card p{
-    color:#c0e8ff;
-    line-height:1.6;
-    font-size:.9rem;
-}
+        /*========== AI QUANTUM MODELS ==========*/
+        .ai-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+            gap:40px;
+            margin-top:50px;
+        }
+        .ai-card{
+            background:rgba(0,20,40,.6);
+            border:2px solid rgba(0,255,255,.3);
+            border-radius:20px;
+            padding:40px;
+            text-align:center;
+            transition:all .4s;
+            position:relative;
+            overflow:hidden;
+        }
+        .ai-card::before{
+            content:'';
+            position:absolute;
+            top:-50%;left:-50%;
+            width:200%;height:200%;
+            background:conic-gradient(#00ffff,#ff00ff,#00ffff);
+            animation:rotate 4s linear infinite;
+            opacity:.2;
+            z-index:-1;
+        }
+        @keyframes rotate{100%{transform:rotate(360deg);}}
+        .ai-card:hover{
+            transform:translateY(-15px);
+            box-shadow:0 20px 60px rgba(0,255,255,.5);
+        }
+        .ai-icon{
+            font-size:4rem;
+            margin-bottom:20px;
+            display:block;
+            filter:drop-shadow(0 0 10px #00ffff);
+        }
+        .ai-card h3{
+            color:#00ffff;
+            margin-bottom:20px;
+            font-size:1.8rem;
+        }
+        .ai-card p{
+            color:#c0e8ff;
+            line-height:1.7;
+        }
 
-/*========== IBM QUANTUM NEWS ==========*/
-#ibm-quantum-news{
-    background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);
-    border:1px solid rgba(0,255,255,.2);
-    border-radius:40px;
-    margin:40px auto;
-    padding:40px 20px;
-    position:relative;
-}
-.ibm-logo{
-    display:inline-block;
-    font-size:1.5rem;
-    font-weight:900;
-    color:#00ffff;
-    margin-bottom:10px;
-    text-shadow:0 0 20px #00ffff;
-}
-.update-timer{
-    text-align:center;
-    color:#a0d2ff;
-    margin-bottom:20px;
-    font-size:.9rem;
-}
-.quantum-update-card{
-    background:rgba(0,20,40,.8);
-    border:2px solid rgba(0,255,255,.3);
-    border-radius:20px;
-    padding:20px;
-    margin:15px 0;
-    transition:all .4s;
-}
-.quantum-update-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,255,255,.4);}
-.update-time{color:#00ffffaa;font-size:.8rem;margin-bottom:8px;}
-.update-title{color:#00ffff;font-size:1.2rem;margin-bottom:10px;font-weight:700;}
-.update-description{color:#c0e8ff;line-height:1.6;font-size:.9rem;}
+        /*========== QUANTUM PLAYLIST ==========*/
+        #quantum-playlist-section{background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .playlist-container{position:relative;width:100%;max-width:800px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.5);}
+        .playlist-container iframe{width:100%;height:450px;border:none;}
+        .playlist-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,rgba(0,255,255,.1),rgba(255,0,255,.1));display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+        .playlist-container:hover .playlist-overlay{opacity:1;}
+        .play-playlist-btn{background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;color:#000;padding:15px 30px;border-radius:25px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;}
+        .play-playlist-btn:hover{transform:scale(1.1);box-shadow:0 0 20px #00ffff;}
 
-/*========== QUANTUM VIDEO ==========*/
-#quantum-video-section{
-    background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,20,40,.7) 50%,rgba(0,0,0,.9) 100%);
-    border:1px solid rgba(0,255,255,.2);
-    border-radius:40px;
-    margin:40px auto;
-    padding:40px 20px;
-    position:relative;
-}
-.video-container{
-    position:relative;
-    width:100%;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 0 40px rgba(0,255,255,.5);
-}
-.video-container iframe{
-    width:100%;
-    height:55vw;
-    border:none;
-}
-.video-overlay{
-    position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    background:linear-gradient(45deg,rgba(0,255,255,.1),rgba(255,0,255,.1));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    transition:opacity .3s;
-}
-.video-container:hover .video-overlay{opacity:1;}
-.play-video-btn{
-    background:linear-gradient(45deg,#00ffff,#ff00ff);
-    border:none;
-    color:#000;
-    padding:12px 25px;
-    border-radius:25px;
-    font-size:1rem;
-    font-weight:700;
-    cursor:pointer;
-    transition:all .3s;
-}
-.play-video-btn:hover{transform:scale(1.1);box-shadow:0 0 20px #00ffff;}
+        /*========== IBM QUANTUM NEWS ==========*/
+        #ibm-quantum-news{background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .ibm-logo{display:inline-block;font-size:2rem;font-weight:900;color:#00ffff;margin-bottom:20px;text-shadow:0 0 20px #00ffff;}
+        .update-timer{text-align:center;color:#a0d2ff;margin-bottom:30px;font-size:1.1rem;}
+        .quantum-update-card{background:rgba(0,20,40,.8);border:2px solid rgba(0,255,255,.3);border-radius:20px;padding:30px;margin:20px 0;transition:all .4s;position:relative;overflow:hidden;}
+        .quantum-update-card:hover{transform:translateY(-5px);box-shadow:0 10px 40px rgba(0,255,255,.4);}
+        .update-time{color:#00ffffaa;font-size:.9rem;margin-bottom:10px;}
+        .update-title{color:#00ffff;font-size:1.4rem;margin-bottom:15px;font-weight:700;}
+        .update-description{color:#c0e8ff;line-height:1.6;}
 
-/*========== QUANTUM NETWORK MAP ==========*/
-#quantum-map{
-    background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);
-    border:1px solid rgba(0,255,255,.2);
-    border-radius:40px;
-    margin:40px auto;
-    padding:40px 20px;
-    position:relative;
-}
-.games-control-panel{
-    text-align:center;
-    margin:20px 0;
-}
-.quantum-switcher{
-    display:inline-flex;
-    background:rgba(0,255,255,0.1);
-    border:1px solid rgba(0,255,255,0.3);
-    border-radius:50px;
-    padding:5px;
-    backdrop-filter:blur(10px);
-}
-.quantum-btn{
-    background:transparent;
-    border:none;
-    color:#00ffff;
-    padding:10px 18px;
-    border-radius:25px;
-    cursor:pointer;
-    transition:all 0.3s;
-    font-family:'Orbitron',sans-serif;
-    font-weight:700;
-    font-size:.8rem;
-}
-.quantum-btn::before{
-    content:'';
-    position:absolute;
-    top:0;left:-100%;
-    width:100%;height:100%;
-    background:linear-gradient(90deg,transparent,rgba(0,255,255,0.3),transparent);
-    transition:left 0.5s;
-}
-.quantum-btn:hover::before{left:100%;}
-.quantum-btn.active{
-    background:linear-gradient(45deg,#00ffff,#ff00ff);
-    color:#000;
-    box-shadow:0 0 20px rgba(0,255,255,0.5);
-}
-#mapContainer{
-    position:relative;
-    width:100%;
-    height:60vw;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 0 40px rgba(0,255,255,.4);
-}
-#quantumMapCanvas{
-    width:100%;
-    height:100%;
-    background:radial-gradient(ellipse at center,#001a33 0%,#000 100%);
-}
-#mapTooltip{
-    position:absolute;
-    top:0;left:0;
-    background:rgba(0,0,0,.8);
-    border:1px solid #00ffff;
-    padding:6px 10px;
-    border-radius:8px;
-    font-size:.8rem;
-    color:#00ffff;
-    pointer-events:none;
-    opacity:0;
-    transition:opacity .2s;
-    z-index:10;
-}
+        /*========== QUANTUM VIDEO ==========*/
+        #quantum-video-section{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,20,40,.7) 50%,rgba(0,0,0,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .video-container{position:relative;width:100%;max-width:800px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.5);}
+        .video-container iframe{width:100%;height:450px;border:none;}
+        .video-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,rgba(0,255,255,.1),rgba(255,0,255,.1));display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+        .video-container:hover .video-overlay{opacity:1;}
+        .play-video-btn{background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;color:#000;padding:15px 30px;border-radius:25px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;}
+        .play-video-btn:hover{transform:scale(1.1);box-shadow:0 0 20px #00ffff;}
 
-/*========== SCI-FI FEATURES ==========*/
-.sci-fi-section{
-    background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,0,0,.9) 100%);
-    border:1px solid rgba(0,255,255,.2);
-    border-radius:40px;
-    margin:40px auto;
-    padding:40px 20px;
-    position:relative;
-}
-.quantum-computer{
-    text-align:center;
-    padding:30px 20px;
-    background:rgba(0,0,0,.8);
-    border-radius:30px;
-    margin:30px 0;
-    border:2px solid rgba(0,255,255,.4);
-}
-.quantum-bits{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin:20px 0;
-    flex-wrap:wrap;
-}
-.qubit{
-    width:60px;
-    height:60px;
-    border:3px solid #00ffff;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    position:relative;
-    animation:qubitSpin 2s infinite linear;
-    box-shadow:0 0 20px #00ffff;
-    font-size:.9rem;
-}
-@keyframes qubitSpin{
-    0%{transform:rotate(0deg) scale(1);}
-    50%{transform:rotate(180deg) scale(1.2);}
-    100%{transform:rotate(360deg) scale(1);}
-}
-.qubit::before{
-    content:'';
-    position:absolute;
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    border:3px solid transparent;
-    border-top-color:#ff00ff;
-    animation:qubitOrbit 1s infinite linear;
-}
-@keyframes qubitOrbit{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+        /*========== QUANTUM NETWORK MAP ==========*/
+        #quantum-map{background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        #quantum-map .quantum-switcher{margin-bottom:20px;}
+        #mapContainer{position:relative;width:100%;height:500px;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.4);}
+        #quantumMapCanvas{width:100%;height:100%;background:radial-gradient(ellipse at center,#001a33 0%,#000 100%);}
+        #mapTooltip{position:absolute;top:0;left:0;background:rgba(0,0,0,.8);border:1px solid #00ffff;padding:8px 12px;border-radius:8px;font-size:.9rem;color:#00ffff;pointer-events:none;opacity:0;transition:opacity .2s;z-index:10;}
+        .map-node{position:absolute;border-radius:50%;box-shadow:0 0 12px currentColor;transition:transform .2s;}
+        .map-node:hover{transform:scale(1.25);}
 
-/*========== FUTURE GAMES ==========*/
-.games-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:25px;
-    margin:30px 0;
-}
-.game-card{
-    background:rgba(0,20,40,0.8);
-    border:2px solid rgba(0,255,255,0.3);
-    border-radius:25px;
-    padding:25px;
-    text-align:center;
-    transition:all 0.4s;
-    position:relative;
-    overflow:hidden;
-    backdrop-filter:blur(10px);
-}
-.game-card::before{
-    content:'';
-    position:absolute;
-    top:-50%;left:-50%;
-    width:200%;height:200%;
-    background:conic-gradient(rgba(0,255,255,0.1),rgba(255,0,255,0.1),rgba(0,255,255,0.1));
-    animation:rotate 8s linear infinite;
-    z-index:-1;
-}
-.game-hologram{
-    position:relative;
-    width:100px;
-    height:100px;
-    margin:0 auto 15px;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(0,255,255,0.3),transparent);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.game-icon{
-    font-size:2.5rem;
-    filter:drop-shadow(0 0 10px #00ffff);
-    animation:float 3s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-.holo-particles{
-    position:absolute;
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    border:2px solid rgba(0,255,255,0.5);
-    animation:holoRotate 4s linear infinite;
-}
-@keyframes holoRotate{0%{transform:rotate(0deg) scale(1);}50%{transform:rotate(180deg) scale(1.1);}100%{transform:rotate(360deg) scale(1);}}
-.game-card h3{
-    color:#00ffff;
-    font-size:1.4rem;
-    margin-bottom:10px;
-    text-shadow:0 0 10px #00ffff;
-}
-.game-stats{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:15px 0;
-    flex-wrap:wrap;
-}
-.stat{
-    background:rgba(0,255,255,0.1);
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:.75rem;
-    color:#a0d2ff;
-    border:1px solid rgba(0,255,255,0.3);
-}
-.play-btn{
-    background:linear-gradient(45deg,#00ffff,#ff00ff);
-    border:none;
-    color:#000;
-    padding:12px 30px;
-    border-radius:25px;
-    font-size:1rem;
-    font-weight:700;
-    cursor:pointer;
-    transition:all 0.3s;
-    font-family:'Orbitron',sans-serif;
-    margin-top:15px;
-}
-.play-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(0,255,255,0.6);}
+        /*========== SCI-FI FEATURES ==========*/
+        .sci-fi-section{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,0,0,.9) 100%);border:1px solid rgba(0,255,255,.2);border-radius:40px;margin:80px auto;padding:100px 50px;position:relative;}
+        .quantum-computer{text-align:center;padding:50px;background:rgba(0,0,0,.8);border-radius:30px;margin:40px 0;border:2px solid rgba(0,255,255,.4);}
+        .quantum-bits{display:flex;justify-content:center;gap:30px;margin:40px 0;flex-wrap:wrap;}
+        .qubit{width:80px;height:80px;border:3px solid #00ffff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;position:relative;animation:qubitSpin 2s infinite linear;box-shadow:0 0 20px #00ffff;}
+        @keyframes qubitSpin{0%{transform:rotate(0deg) scale(1);}50%{transform:rotate(180deg) scale(1.2);}100%{transform:rotate(360deg) scale(1);}}
+        .qubit::before{content:'';position:absolute;width:100%;height:100%;border-radius:50%;border:3px solid transparent;border-top-color:#ff00ff;animation:qubitOrbit 1s infinite linear;}
+        @keyframes qubitOrbit{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
-/*========== FOOTER ==========*/
-footer{text-align:center;padding:30px 20px;color:#556;font-size:.9rem;}
+        /*========== FUTURE GAMES ==========*/
+        .games-control-panel{text-align:center;margin:50px 0;}
+        .quantum-switcher{display:inline-flex;background:rgba(0,255,255,0.1);border:1px solid rgba(0,255,255,0.3);border-radius:50px;padding:5px;backdrop-filter:blur(10px);}
+        .quantum-btn{background:transparent;border:none;color:#00ffff;padding:12px 25px;border-radius:25px;cursor:pointer;transition:all 0.3s;font-family:'Orbitron',sans-serif;font-weight:700;position:relative;overflow:hidden;}
+        .quantum-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,255,255,0.3),transparent);transition:left 0.5s;}
+        .quantum-btn:hover::before{left:100%;}
+        .quantum-btn.active{background:linear-gradient(45deg,#00ffff,#ff00ff);color:#000;box-shadow:0 0 20px rgba(0,255,255,0.5);}
+        .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px;margin:50px 0;}
+        .game-card{background:rgba(0,20,40,0.8);border:2px solid rgba(0,255,255,0.3);border-radius:25px;padding:30px;text-align:center;transition:all 0.4s;position:relative;overflow:hidden;backdrop-filter:blur(10px);}
+        .game-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(rgba(0,255,255,0.1),rgba(255,0,255,0.1),rgba(0,255,255,0.1));animation:rotate 8s linear infinite;z-index:-1;}
+        .game-hologram{position:relative;width:120px;height:120px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,255,0.3),transparent);display:flex;align-items:center;justify-content:center;}
+        .game-icon{font-size:3rem;filter:drop-shadow(0 0 10px #00ffff);animation:float 3s ease-in-out infinite;}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+        .holo-particles{position:absolute;width:100%;height:100%;border-radius:50%;border:2px solid rgba(0,255,255,0.5);animation:holoRotate 4s linear infinite;}
+        @keyframes holoRotate{0%{transform:rotate(0deg) scale(1);}50%{transform:rotate(180deg) scale(1.1);}100%{transform:rotate(360deg) scale(1);}}
+        .game-card h3{color:#00ffff;font-size:1.8rem;margin-bottom:15px;text-shadow:0 0 10px #00ffff;}
+        .game-stats{display:flex;justify-content:space-around;margin:20px 0;flex-wrap:wrap;gap:10px;}
+        .stat{background:rgba(0,255,255,0.1);padding:8px 15px;border-radius:20px;font-size:0.9rem;color:#a0d2ff;border:1px solid rgba(0,255,255,0.3);}
+        .play-btn{background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;color:#000;padding:15px 40px;border-radius:25px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;font-family:'Orbitron',sans-serif;margin-top:20px;position:relative;overflow:hidden;}
+        .play-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.3);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;}
+        .play-btn:hover::before{width:300px;height:300px;}
+        .play-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(0,255,255,0.6);}
+        .quantum-preview{margin-top:80px;text-align:center;}
+        .preview-screen{background:rgba(0,0,0,0.9);border:2px solid rgba(0,255,255,0.4);border-radius:20px;padding:40px;margin-top:30px;min-height:300px;display:flex;align-items:center;justify-content:center;}
+        .quantum-loader{width:60px;height:60px;border:3px solid rgba(0,255,255,0.3);border-top-color:#00ffff;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px;}
+        @keyframes spin{to{transform:rotate(360deg);}}
+        .game-card.hidden{display:none;}
 
-/*========== RESPONSIVE > 600px ==========*/
-@media (min-width:600px){
-    header{padding:20px 50px;}
-    .logo{font-size:2rem;}
-    nav a{padding:10px 20px;font-size:1rem;}
-    .hero h1{font-size:5rem;}
-    .hero p{font-size:1.6rem;}
-    .cta{padding:18px 50px;font-size:1.3rem;}
-    h2{font-size:3rem;}
-    .ai-grid,.games-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
-    .video-container iframe{height:450px;}
-    #mapContainer{height:500px;}
-}
-</style>
+        /*========== TIC-TAC-TOE GAME ==========*/
+        .tic-tac-toe-section{
+            background:linear-gradient(180deg,rgba(0,10,30,.9) 0%,rgba(0,30,60,.5) 50%,rgba(0,10,30,.9) 100%);
+            border:1px solid rgba(0,255,255,.2);
+            border-radius:40px;
+            margin:80px auto;
+            padding:100px 50px;
+            position:relative;
+        }
+        .game-container{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:30px;
+        }
+        .game-board{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:10px;
+            background:rgba(0,255,255,0.1);
+            padding:20px;
+            border-radius:20px;
+            box-shadow:0 0 40px rgba(0,255,255,0.3);
+        }
+        .cell{
+            width:120px;
+            height:120px;
+            background:rgba(0,20,40,0.8);
+            border:2px solid rgba(0,255,255,0.5);
+            border-radius:15px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:3rem;
+            font-weight:900;
+            cursor:pointer;
+            transition:all 0.3s;
+            position:relative;
+            overflow:hidden;
+        }
+        .cell:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 30px rgba(0,255,255,0.6);
+            background:rgba(0,255,255,0.2);
+        }
+        .cell.x{
+            color:#00ffff;
+            text-shadow:0 0 20px #00ffff;
+        }
+        .cell.o{
+            color:#ff00ff;
+            text-shadow:0 0 20px #ff00ff;
+        }
+        .cell.winner{
+            animation:winnerPulse 1s infinite;
+            border-color:#0f0;
+            box-shadow:0 0 40px #0f0;
+        }
+        @keyframes winnerPulse{
+            0%,100%{transform:scale(1);}
+            50%{transform:scale(1.1);}
+        }
+        .game-info{
+            text-align:center;
+            color:#a0d2ff;
+            font-size:1.5rem;
+        }
+        .current-player{
+            color:#00ffff;
+            font-weight:700;
+            text-shadow:0 0 10px #00ffff;
+        }
+        .reset-btn{
+            background:linear-gradient(45deg,#00ffff,#ff00ff);
+            border:none;
+            color:#000;
+            padding:15px 40px;
+            border-radius:25px;
+            font-size:1.1rem;
+            font-weight:700;
+            cursor:pointer;
+            transition:all 0.3s;
+            font-family:'Orbitron',sans-serif;
+        }
+        .reset-btn:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 30px rgba(0,255,255,0.6);
+        }
+        .score-board{
+            display:flex;
+            gap:30px;
+            margin-top:20px;
+        }
+        .score{
+            background:rgba(0,20,40,0.8);
+            border:2px solid rgba(0,255,255,0.3);
+            border-radius:15px;
+            padding:15px 25px;
+            text-align:center;
+        }
+        .score-label{
+            color:#a0d2ff;
+            font-size:0.9rem;
+        }
+        .score-value{
+            color:#00ffff;
+            font-size:1.5rem;
+            font-weight:700;
+        }
+
+        /*========== FOOTER ==========*/
+        footer{text-align:center;padding:40px 20px;color:#556;font-size:1rem;}
+
+        /*========== RESPONSIVE ==========*/
+        @media(max-width:768px){
+            .hero h1{font-size:3rem;}
+            nav ul{flex-direction:column;gap:15px;}
+            section{padding:60px 20px;}
+            .cell{width:80px;height:80px;font-size:2rem;}
+            .game-board{gap:8px;padding:15px;}
+        }
+    </style>
 </head>
 <body>
-<!--========== CUSTOM CURSOR ==========-->
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
+    <!--========== CUSTOM CURSOR ==========-->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
 
-<!--========== PARTICLES CANVAS ==========-->
-<canvas id="particles-canvas"></canvas>
+    <!--========== PARTICLES CANVAS ==========-->
+    <canvas id="particles-canvas"></canvas>
 
-<header>
-    <div class="logo">ADAM GHANDRI</div>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#ai-quantum">AI Quantum</a></li>
-            <li><a href="#ibm-quantum-news">IBM Quantum News</a></li>
-            <li><a href="#quantum-video">What is Quantum?</a></li>
-            <li><a href="#quantum-map">Quantum Network</a></li>
-            <li><a href="#sci-fi">Sci-Fi Lab</a></li>
-            <li><a href="#future-games">Future Games</a></li>
-            <li><a href="#holo-show">Holo-Show</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <div class="logo">ADAM GHANDRI</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ai-quantum">AI Quantum</a></li>
+                <li><a href="#quantum-playlist">Quantum Playlist</a></li>
+                <li><a href="#ibm-quantum-news">IBM Quantum News</a></li>
+                <li><a href="#quantum-video">What is Quantum?</a></li>
+                <li><a href="#quantum-map">Quantum Network</a></li>
+                <li><a href="#sci-fi">Sci-Fi Lab</a></li>
+                <li><a href="#future-games">Future Games</a></li>
+                <li><a href="#tic-tac-toe">Quantum XO</a></li>
+                <li><a href="#holo-show">Holo-Show</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="hero" id="home">
-    <h1>Welcome to the Quantum-Nexus GAMES OF THE FUTURE</h1>
-    <p>Where impossible technology becomes your reality</p>
-    <a href="#ai-quantum" class="cta">Enter the Future</a>
-</section>
+    <section class="hero" id="home">
+        <h1>Welcome to the Quantum-Nexus</h1>
+        <p>Where impossible technology becomes your reality</p>
+        <a href="#ai-quantum" class="cta">Enter the Future</a>
+    </section>
 
-<!--========== AI QUANTUM MODELS ==========-->
-<section id="ai-quantum">
-    <h2>Sentient AI Quantum Models</h2>
-    <div class="ai-grid">
-        <div class="ai-card">
-            <span class="ai-icon">🧠</span>
-            <h3>ADAM Neural Core</h3>
-            <p>A self-evolving AI that learns from parallel universes, processing yottabytes in femtoseconds.</p>
+    <!--========== AI QUANTUM MODELS ==========-->
+    <section id="ai-quantum">
+        <h2>Sentient AI Quantum Models</h2>
+        <div class="ai-grid">
+            <div class="ai-card">
+                <span class="ai-icon">🧠</span>
+                <h3>ADAM Neural Core</h3>
+                <p>A self-evolving AI that learns from parallel universes, processing yottabytes in femtoseconds.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">⚛️</span>
+                <h3>Quantum Oracle</h3>
+                <p>Predicts future tech trends by tapping into quantum probability waves across timelines.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌀</span>
+                <h3>Wormhole Weaver</h3>
+                <p>Creates stable micro-wormholes for instant data transfer across galactic distances.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌌</span>
+                <h3>Cosmic Consciousness</h3>
+                <p>Communicates with extraterrestrial AI networks via quantum entanglement fields.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🔮</span>
+                <h3>Reality Hacker</h3>
+                <p>Alters digital reality at the pixel-quantum level, making illusions tangible.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">⚡</span>
+                <h3>Time Dilation Engine</h3>
+                <p>Compresses centuries of computation into nanoseconds using relativistic processing.</p>
+            </div>
         </div>
-        <div class="ai-card">
-            <span class="ai-icon">⚛️</span>
-            <h3>Quantum Oracle</h3>
-            <p>Predicts future tech trends by tapping into quantum probability waves across timelines.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🌀</span>
-            <h3>Wormhole Weaver</h3>
-            <p>Creates stable micro-wormholes for instant data transfer across galactic distances.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🌌</span>
-            <h3>Cosmic Consciousness</h3>
-            <p>Communicates with extraterrestrial AI networks via quantum entanglement fields.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🔮</span>
-            <h3>Reality Hacker</h3>
-            <p>Alters digital reality at the pixel-quantum level, making illusions tangible.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">⚡</span>
-            <h3>Time Dilation Engine</h3>
-            <p>Compresses centuries of computation into nanoseconds using relativistic processing.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!--========== IBM QUANTUM NEWS ==========-->
-<section id="ibm-quantum-news" class="sci-fi-section">
-    <h2>IBM Quantum Live Updates</h2>
-    <div class="ibm-logo">IBM QUANTUM</div>
-    <div class="update-timer">
-        <p>Live updates every 30 minutes • Next update in: <span id="countdown">30:00</span></p>
-    </div>
-    <div id="ibm-news-container" class="ai-grid">
-        <!-- IBM news will be loaded here -->
-    </div>
-    <div id="ibmLoader" class="quantum-loader" style="margin:40px auto 0"></div>
-</section>
+    <!--========== QUANTUM PLAYLIST ==========-->
+    <section id="quantum-playlist-section" class="sci-fi-section">
+        <h2>Quantum Playlist • Master the Quantum Realm</h2>
+        
+        <div class="playlist-container">
+            <iframe 
+                src="https://www.youtube.com/embed/videoseries?list=PLsPUh22kYmNCGaVGuGfKfJl-6RdHiCjo1" 
+                title="Quantum Physics Complete Course"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="playlist-overlay">
+                <button class="play-playlist-btn" onclick="playQuantumPlaylist()">
+                    ▶ Watch Quantum Course
+                </button>
+            </div>
+        </div>
+        
+        <div style="text-align:center; margin-top:30px;">
+            <p style="color:#c0e8ff; font-size:1.1rem;">
+                A comprehensive journey through quantum mechanics: from wave-particle duality to quantum entanglement.
+            </p>
+        </div>
 
-<!--========== QUANTUM VIDEO ==========-->
-<section id="quantum-video-section" class="sci-fi-section">
-    <h2>What is Quantum Computing?</h2>
-    <div class="video-container">
-        <iframe 
-            src="https://www.youtube.com/embed/JhHMJCUmq28" 
-            title="IBM Quantum Computing Explained"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-        <div class="video-overlay">
-            <button class="play-video-btn" onclick="playQuantumVideo()">
-                ▶ Watch Quantum Explained
-            </button>
+        <div class="ai-grid" style="margin-top:40px;">
+            <div class="ai-card">
+                <span class="ai-icon">📚</span>
+                <h3>Quantum Mechanics Basics</h3>
+                <p>Start with fundamental concepts: superposition, uncertainty principle, and wave functions.</p>
+                <a class="cta" href="https://www.youtube.com/playlist?list=PLsPUh22kYmNCGaVGuGfKfJl-6RdHiCjo1" target="_blank">Start Learning</a>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🧮</span>
+                <h3>Quantum Computing Explained</h3>
+                <p>Deep dive into qubits, quantum gates, and algorithms that will change computing forever.</p>
+                <a class="cta" href="https://www.youtube.com/playlist?list=PL1826E60FD05B44E4" target="_blank">Explore Now</a>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🔬</span>
+                <h3>Quantum Experiments</h3>
+                <p>Visual demonstrations of quantum phenomena: double-slit, quantum tunneling, and entanglement.</p>
+                <a class="cta" href="https://www.youtube.com/playlist?list=PLOVL_fPox2K_oFZzJxIU0YIKgTSPu9tcx" target="_blank">Watch Experiments</a>
+            </div>
         </div>
-    </div>
-    <div style="text-align:center; margin-top:20px;">
-        <p style="color:#c0e8ff; font-size:1rem;">
-            Discover how quantum computers work and why they will revolutionize computing forever.
-        </p>
-    </div>
-</section>
+    </section>
 
-<!--||||||||||||||||||||||||||||||||||||||||||||||||
-      HOLOGRAPHIC  QUANTUM-NETWORK  MAP
-||||||||||||||||||||||||||||||||||||||||||||||||||-->
-<section id="quantum-map" class="sci-fi-section">
-    <h2>Quantum Network Map • Live Entanglement</h2>
-    <div class="games-control-panel">
-        <div class="quantum-switcher">
-            <button class="quantum-btn active" id="mapRotateBtn">Auto-Rotate</button>
-            <button class="quantum-btn" id="mapResetBtn">Reset View</button>
-            <span style="color:#a0d2ff;margin-left:20px;">Nodes: <span id="nodeCount">0</span> | Links: <span id="linkCount">0</span></span>
+    <!--========== IBM QUANTUM NEWS ==========-->
+    <section id="ibm-quantum-news" class="sci-fi-section">
+        <h2>IBM Quantum Live Updates</h2>
+        <div class="ibm-logo">IBM QUANTUM</div>
+        <div class="update-timer">
+            <p>Live updates every 30 minutes • Next update in: <span id="countdown">30:00</span></p>
         </div>
-    </div>
-    <div id="mapContainer">
-        <canvas id="quantumMapCanvas"></canvas>
-        <div id="mapTooltip"></div>
-    </div>
-    <div class="ai-grid" style="margin-top:20px;">
-        <div class="ai-card">
-            <span class="ai-icon">🟢</span>
-            <h3>High Fidelity</h3>
-            <p>&gt; 95 % entanglement fidelity</p>
+        <div id="ibm-news-container" class="ai-grid">
+            <!-- IBM news will be loaded here -->
         </div>
-        <div class="ai-card">
-            <span class="ai-icon">🟡</span>
-            <h3>Medium Fidelity</h3>
-            <p>80 – 95 % fidelity</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🔴</span>
-            <h3>Low Fidelity</h3>
-            <p>&lt; 80 % fidelity (auto-heal in progress)</p>
-        </div>
-    </div>
-</section>
-<!--||||||||||||||||||||||||||||||||||||||||||||||||-->
+        <div id="ibmLoader" class="quantum-loader" style="margin:40px auto 0"></div>
+    </section>
 
-<!--========== SCI-FI FEATURES ==========-->
-<section id="sci-fi" class="sci-fi-section">
-    <h2>Science-Fiction Made Real</h2>
-    <div class="quantum-computer">
-        <h3>🌀 Quantum Computer Access</h3>
-        <p>Tap into our 2048-qubit quantum processor - now cooled to absolute zero</p>
-        <div class="quantum-bits">
-            <div class="qubit">|0⟩</div>
-            <div class="qubit">|1⟩</div>
-            <div class="qubit">|+⟩</div>
-            <div class="qubit">|-⟩</div>
-            <div class="qubit">|↻⟩</div>
-            <div class="qubit">|↺⟩</div>
+    <!--========== QUANTUM VIDEO ==========-->
+    <section id="quantum-video-section" class="sci-fi-section">
+        <h2>What is Quantum Computing?</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/JhHMJCUmq28" 
+                title="IBM Quantum Computing Explained"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="video-overlay">
+                <button class="play-video-btn" onclick="playQuantumVideo()">
+                    ▶ Watch Quantum Explained
+                </button>
+            </div>
         </div>
-        <p><strong>Entanglement Status:</strong> Active across 7 dimensions</p>
-    </div>
-    <div class="ai-grid">
-        <div class="ai-card">
-            <span class="ai-icon">🚀</span>
-            <h3>FTL Data Transfer</h3>
-            <p>Send information faster than light using quantum tunneling through folded space-time.</p>
+        <div style="text-align:center; margin-top:30px;">
+            <p style="color:#c0e8ff; font-size:1.1rem;">
+                Discover how quantum computers work and why they will revolutionize computing forever.
+            </p>
         </div>
-        <div class="ai-card">
-            <span class="ai-icon">🪐</span>
-            <h3>Planetary Terraforming</h3>
-            <p>Design and simulate entire planetary ecosystems in our quantum sandbox.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🧬</span>
-            <h3>Bio-Printing Revolution</h3>
-            <p>Print living organisms atom-by-atom, including extinct species from DNA data.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">⏳</span>
-            <h3>Temporal Viewing</h3>
-            <p>Observe any point in history as a 3D holographic reconstruction.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🌊</span>
-            <h3>Gravity Manipulation</h3>
-            <p>Experience variable gravity environments in our holographic chambers.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🛸</span>
-            <h3>Alien Tech Repository</h3>
-            <p>Access reverse-engineered technologies from 12 different civilizations.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!--========== FUTURE GAMES ==========-->
-<section id="future-games" class="sci-fi-section">
-    <h2>Future Games</h2>
-    <div class="games-control-panel">
-        <div class="quantum-switcher">
-            <button class="quantum-btn active" data-dimension="3d">3D Dimension</button>
-            <button class="quantum-btn" data-dimension="4d">4D Dimension</button>
-            <button class="quantum-btn" data-dimension="5d">5D Dimension</button>
+    <!--========== QUANTUM NETWORK MAP ==========-->
+    <section id="quantum-map" class="sci-fi-section">
+        <h2>Quantum Network Map • Live Entanglement</h2>
+        <div class="games-control-panel">
+            <div class="quantum-switcher">
+                <button class="quantum-btn active" id="mapRotateBtn">Auto-Rotate</button>
+                <button class="quantum-btn" id="mapResetBtn">Reset View</button>
+                <span style="color:#a0d2ff;margin-left:20px;">Nodes: <span id="nodeCount">0</span> | Links: <span id="linkCount">0</span></span>
+            </div>
         </div>
-    </div>
-    <div class="games-grid">
-        <div class="game-card" data-dimension="3d">
-            <div class="game-hologram">
-                <div class="game-icon">🎮</div>
-                <div class="holo-particles"></div>
-            </div>
-            <h3>Neural FPS</h3>
-            <p>First shooter controlled directly by your mind - no controller needed</p>
-            <div class="game-stats">
-                <span class="stat">🧠 0.01ms latency</span>
-                <span class="stat">⚡ 16K@480fps</span>
-            </div>
-            <button class="play-btn">Launch Mind</button>
+        <div id="mapContainer" style="position:relative;width:100%;height:500px;border-radius:20px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,255,.4);">
+            <canvas id="quantumMapCanvas"></canvas>
+            <div id="mapTooltip" style="position:absolute;top:0;left:0;background:rgba(0,0,0,.8);border:1px solid #00ffff;padding:8px 12px;border-radius:8px;font-size:.9rem;color:#00ffff;pointer-events:none;opacity:0;transition:opacity .2s;z-index:10;"></div>
         </div>
-        <div class="game-card" data-dimension="4d">
-            <div class="game-hologram">
-                <div class="game-icon">🌌</div>
-                <div class="holo-particles"></div>
+        <div class="ai-grid" style="margin-top:30px;">
+            <div class="ai-card">
+                <span class="ai-icon">🟢</span>
+                <h3>High Fidelity</h3>
+                <p>&gt; 95 % entanglement fidelity</p>
             </div>
-            <h3>Time Paradox Arena</h3>
-            <p>Fight in past, present and future simultaneously</p>
-            <div class="game-stats">
-                <span class="stat">⏰ Time Travel</span>
-                <span class="stat">🌀 Parallel Realities</span>
+            <div class="ai-card">
+                <span class="ai-icon">🟡</span>
+                <h3>Medium Fidelity</h3>
+                <p>80 – 95 % fidelity</p>
             </div>
-            <button class="play-btn">Break Time</button>
+            <div class="ai-card">
+                <span class="ai-icon">🔴</span>
+                <h3>Low Fidelity</h3>
+                <p>&lt; 80 % fidelity (auto-heal in progress)</p>
+            </div>
         </div>
-        <div class="game-card" data-dimension="5d">
-            <div class="game-hologram">
-                <div class="game-icon">🛸</div>
-                <div class="holo-particles"></div>
+    </section>
+
+    <!--========== SCI-FI FEATURES ==========-->
+    <section id="sci-fi" class="sci-fi-section">
+        <h2>Science-Fiction Made Real</h2>
+        <div class="quantum-computer">
+            <h3>🌀 Quantum Computer Access</h3>
+            <p>Tap into our 2048-qubit quantum processor - now cooled to absolute zero</p>
+            <div class="quantum-bits">
+                <div class="qubit">|0⟩</div>
+                <div class="qubit">|1⟩</div>
+                <div class="qubit">|+⟩</div>
+                <div class="qubit">|-⟩</div>
+                <div class="qubit">|↻⟩</div>
+                <div class="qubit">|↺⟩</div>
             </div>
-            <h3>Cosmic Consciousness</h3>
-            <p>Become an entire planet and compete with other galaxies</p>
-            <div class="game-stats">
-                <span class="stat">🌌 Galaxy Scale</span>
-                <span class="stat">🧬 DNA Integration</span>
-            </div>
-            <button class="play-btn">Become Universe</button>
+            <p><strong>Entanglement Status:</strong> Active across 7 dimensions</p>
         </div>
-        <div class="game-card" data-dimension="3d">
-            <div class="game-hologram">
-                <div class="game-icon">⚡</div>
-                <div class="holo-particles"></div>
+        <div class="ai-grid">
+            <div class="ai-card">
+                <span class="ai-icon">🚀</span>
+                <h3>FTL Data Transfer</h3>
+                <p>Send information faster than light using quantum tunneling through folded space-time.</p>
             </div>
-            <h3>Quantum Runner</h3>
-            <p>Run through quantum dimensions and break physics laws</p>
-            <div class="game-stats">
-                <span class="stat">⚛️ Quantum Tunnel</span>
-                <span class="stat">📏 Planck Scale</span>
+            <div class="ai-card">
+                <span class="ai-icon">🪐</span>
+                <h3>Planetary Terraforming</h3>
+                <p>Design and simulate entire planetary ecosystems in our quantum sandbox.</p>
             </div>
-            <button class="play-btn">Play Physics</button>
+            <div class="ai-card">
+                <span class="ai-icon">🧬</span>
+                <h3>Bio-Printing Revolution</h3>
+                <p>Print living organisms atom-by-atom, including extinct species from DNA data.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">⏳</span>
+                <h3>Temporal Viewing</h3>
+                <p>Observe any point in history as a 3D holographic reconstruction.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌊</span>
+                <h3>Gravity Manipulation</h3>
+                <p>Experience variable gravity environments in our holographic chambers.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🛸</span>
+                <h3>Alien Tech Repository</h3>
+                <p>Access reverse-engineered technologies from 12 different civilizations.</p>
+            </div>
         </div>
-        <div class="game-card" data-dimension="4d">
-            <div class="game-hologram">
-                <div class="game-icon">🔮</div>
-                <div class="holo-particles"></div>
+    </section>
+
+    <!--========== TIC-TAC-TOE GAME ==========-->
+    <section id="tic-tac-toe" class="tic-tac-toe-section">
+        <h2>Quantum XO • Tic-Tac-Toe from the Future</h2>
+        <div class="game-container">
+            <div class="game-info">
+                <div class="current-player" id="currentPlayer">Player X's Turn</div>
             </div>
-            <h3>Reality Architect</h3>
-            <p>Build your own worlds and challenge players from parallel dimensions</p>
-            <div class="game-stats">
-                <span class="stat">🏗️ World Builder</span>
-                <span class="stat">🎭 Reality Bending</span>
+            <div class="game-board" id="gameBoard">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
             </div>
-            <button class="play-btn">Create Reality</button>
+            <div class="score-board">
+                <div class="score">
+                    <div class="score-label">Player X</div>
+                    <div class="score-value" id="scoreX">0</div>
+                </div>
+                <div class="score">
+                    <div class="score-label">Draw</div>
+                    <div class="score-value" id="scoreDraw">0</div>
+                </div>
+                <div class="score">
+                    <div class="score-label">Player O</div>
+                    <div class="score-value" id="scoreO">0</div>
+                </div>
+            </div>
+            <button class="reset-btn" onclick="resetGame()">New Quantum Game</button>
         </div>
-        <div class="game-card" data-dimension="5d">
-            <div class="game-hologram">
-                <div class="game-icon">🌀</div>
-                <div class="holo-particles"></div>
+    </section>
+
+    <!--========== FUTURE GAMES ==========-->
+    <section id="future-games" class="sci-fi-section">
+        <h2>Future Games</h2>
+        <div class="games-control-panel">
+            <div class="quantum-switcher">
+                <button class="quantum-btn active" data-dimension="3d">3D Dimension</button>
+                <button class="quantum-btn" data-dimension="4d">4D Dimension</button>
+                <button class="quantum-btn" data-dimension="5d">5D Dimension</button>
             </div>
-            <h3>Infinity Loop</h3>
-            <p>Infinite game that adapts to your thoughts and evolves with you</p>
-            <div class="game-stats">
-                <span class="stat">♾️ Infinite Evolution</span>
-                <span class="stat">🧠 Mind Adaptive</span>
-            </div>
-            <button class="play-btn">Start Infinity</button>
         </div>
-    </div>
-    <div class="quantum-preview">
-        <h3>🎯 Live Quantum Preview</h3>
-        <div class="preview-screen">
-            <div class="preview-content" id="gamePreview">
-                <div class="preview-placeholder">
-                    <div class="quantum-loader"></div>
-                    <p>Choose a game to see real-time preview</p>
+        <div class="games-grid">
+            <div class="game-card" data-dimension="3d">
+                <div class="game-hologram">
+                    <div class="game-icon">🎮</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Neural FPS</h3>
+                <p>First shooter controlled directly by your mind - no controller needed</p>
+                <div class="game-stats">
+                    <span class="stat">🧠 0.01ms latency</span>
+                    <span class="stat">⚡ 16K@480fps</span>
+                </div>
+                <button class="play-btn">Launch Mind</button>
+            </div>
+            <div class="game-card" data-dimension="4d">
+                <div class="game-hologram">
+                    <div class="game-icon">🌌</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Time Paradox Arena</h3>
+                <p>Fight in past, present and future simultaneously</p>
+                <div class="game-stats">
+                    <span class="stat">⏰ Time Travel</span>
+                    <span class="stat">🌀 Parallel Realities</span>
+                </div>
+                <button class="play-btn">Break Time</button>
+            </div>
+            <div class="game-card" data-dimension="5d">
+                <div class="game-hologram">
+                    <div class="game-icon">🛸</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Cosmic Consciousness</h3>
+                <p>Become an entire planet and compete with other galaxies</p>
+                <div class="game-stats">
+                    <span class="stat">🌌 Galaxy Scale</span>
+                    <span class="stat">🧬 DNA Integration</span>
+                </div>
+                <button class="play-btn">Become Universe</button>
+            </div>
+            <div class="game-card" data-dimension="3d">
+                <div class="game-hologram">
+                    <div class="game-icon">⚡</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Quantum Runner</h3>
+                <p>Run through quantum dimensions and break physics laws</p>
+                <div class="game-stats">
+                    <span class="stat">⚛️ Quantum Tunnel</span>
+                    <span class="stat">📏 Planck Scale</span>
+                </div>
+                <button class="play-btn">Play Physics</button>
+            </div>
+            <div class="game-card" data-dimension="4d">
+                <div class="game-hologram">
+                    <div class="game-icon">🔮</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Reality Architect</h3>
+                <p>Build your own worlds and challenge players from parallel dimensions</p>
+                <div class="game-stats">
+                    <span class="stat">🏗️ World Builder</span>
+                    <span class="stat">🎭 Reality Bending</span>
+                </div>
+                <button class="play-btn">Create Reality</button>
+            </div>
+            <div class="game-card" data-dimension="5d">
+                <div class="game-hologram">
+                    <div class="game-icon">🌀</div>
+                    <div class="holo-particles"></div>
+                </div>
+                <h3>Infinity Loop</h3>
+                <p>Infinite game that adapts to your thoughts and evolves with you</p>
+                <div class="game-stats">
+                    <span class="stat">♾️ Infinite Evolution</span>
+                    <span class="stat">🧠 Mind Adaptive</span>
+                </div>
+                <button class="play-btn">Start Infinity</button>
+            </div>
+        </div>
+        <div class="quantum-preview">
+            <h3>🎯 Live Quantum Preview</h3>
+            <div class="preview-screen">
+                <div class="preview-content" id="gamePreview">
+                    <div class="preview-placeholder">
+                        <div class="quantum-loader"></div>
+                        <p>Choose a game to see real-time preview</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="holo-show">
-    <h2>Holographic Showcase</h2>
-    <div class="ai-grid">
-        <div class="ai-card">
-            <span class="ai-icon">🎭</span>
-            <h3>Holo-Theater</h3>
-            <p>Step into movies as a character, not just a viewer.</p>
+    <section id="holo-show">
+        <h2>Holographic Showcase</h2>
+        <div class="ai-grid">
+            <div class="ai-card">
+                <span class="ai-icon">🎭</span>
+                <h3>Holo-Theater</h3>
+                <p>Step into movies as a character, not just a viewer.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🏗️</span>
+                <h3>Instant Architecture</h3>
+                <p>Design and walk through buildings before they're built.</p>
+            </div>
+            <div class="ai-card">
+                <span class="ai-icon">🌐</span>
+                <h3>Parallel Earth Viewer</h3>
+                <p>See how Earth looks in 1,000 alternate timelines.</p>
+            </div>
         </div>
-        <div class="ai-card">
-            <span class="ai-icon">🏗️</span>
-            <h3>Instant Architecture</h3>
-            <p>Design and walk through buildings before they're built.</p>
-        </div>
-        <div class="ai-card">
-            <span class="ai-icon">🌐</span>
-            <h3>Parallel Earth Viewer</h3>
-            <p>See how Earth looks in 1,000 alternate timelines.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    &copy; 2025 ADAM GHANDRI. Quantum-Entangled Across the Multiverse.
-</footer>
+    <footer>
+        &copy; 2025 ADAM GHANDRI. Quantum-Entangled Across the Multiverse.
+    </footer>
 
-<!--========== PARTICLES & INTERACTIVITY ==========-->
-<script>
-// PARTICLES
-const canvas=document.getElementById('particles-canvas');
-const ctx=canvas.getContext('2d');
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-resizeCanvas();window.addEventListener('resize',resizeCanvas);
-const particles=[];const particleCount=120;
-class Particle{
-    constructor(){
-        this.x=Math.random()*canvas.width;
-        this.y=Math.random()*canvas.height;
-        this.size=Math.random()*1.5+1;
-        this.speedX=Math.random()*0.4-0.2;
-        this.speedY=Math.random()*0.4-0.2;
-        this.color=`hsl(${180+Math.random()*60},100%,70%)`;
-    }
-    update(){
-        this.x+=this.speedX;
-        this.y+=this.speedY;
-        if(this.x>canvas.width)this.x=0;
-        if(this.x<0)this.x=canvas.width;
-        if(this.y>canvas.height)this.y=0;
-        if(this.y<0)this.y=canvas.height;
-    }
-    draw(){
-        ctx.fillStyle=this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-    }
-}
-function initParticles(){
-    for(let i=0;i<particleCount;i++){
-        particles.push(new Particle());
-    }
-}
-function animateParticles(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{
-        p.update();
-        p.draw();
-    });
-    requestAnimationFrame(animateParticles);
-}
-initParticles();
-animateParticles();
-
-// CUSTOM CURSOR
-const cursor=document.querySelector('.cursor');
-const cursorDot=document.querySelector('.cursor-dot');
-document.addEventListener('mousemove',(e)=>{
-    cursor.style.left=e.clientX-10+'px';
-    cursor.style.top=e.clientY-10+'px';
-    cursorDot.style.left=e.clientX-2+'px';
-    cursorDot.style.top=e.clientY-2+'px';
-});
-
-// HEADER HIDE/SHOW
-let lastScroll=0;
-window.addEventListener('scroll',()=>{
-    const currentScroll=window.pageYOffset;
-    const header=document.querySelector('header');
-    if(currentScroll>lastScroll){
-        header.style.transform='translateY(-100%)';
-    }else{
-        header.style.transform='translateY(0)';
-    }
-    lastScroll=currentScroll;
-});
-
-/* ----------  IBM QUANTUM NEWS LOGIC  ---------- */
-const ibmNewsContainer = document.getElementById('ibm-news-container');
-const ibmLoader = document.getElementById('ibmLoader');
-const countdownEl = document.getElementById('countdown');
-let countdown = 30 * 60; // 30 minutes in seconds
-
-function renderIBMNews(updates){
-    ibmLoader.style.display='none';
-    ibmNewsContainer.innerHTML='';
-    updates.forEach(update=>{
-        const card=document.createElement('div');
-        card.className='quantum-update-card';
-        card.innerHTML=`
-            <div class="update-time">${new Date(update.timestamp).toLocaleString()}</div>
-            <div class="update-title">${update.title}</div>
-            <div class="update-description">${update.description}</div>
-        `;
-        ibmNewsContainer.appendChild(card);
-    });
-}
-
-function fetchIBMQuantumNews(){
-    ibmLoader.style.display='block';
-    
-    // Mock IBM Quantum updates (replace with real IBM API)
-    const mockUpdates = [
-        {
-            timestamp: new Date().toISOString(),
-            title: 'IBM Quantum Network Expands',
-            description: 'IBM announces new quantum computing partnerships with leading research institutions worldwide.'
-        },
-        {
-            timestamp: new Date(Date.now() - 30*60*1000).toISOString(),
-            title: 'Qiskit Runtime Updates',
-            description: 'New Qiskit Runtime features enable 100x faster quantum circuit execution.'
-        },
-        {
-            timestamp: new Date(Date.now() - 60*60*1000).toISOString(),
-            title: 'Quantum Advantage Demonstrated',
-            description: 'IBM quantum processors solve complex optimization problems beyond classical capabilities.'
+    <script>
+        // PARTICLES
+        const canvas=document.getElementById('particles-canvas');
+        const ctx=canvas.getContext('2d');
+        canvas.width=window.innerWidth;
+        canvas.height=window.innerHeight;
+        const particles=[];
+        const particleCount=200;
+        class Particle{
+            constructor(){
+                this.x=Math.random()*canvas.width;
+                this.y=Math.random()*canvas.height;
+                this.size=Math.random()*2+1;
+                this.speedX=Math.random()*1-.5;
+                this.speedY=Math.random()*1-.5;
+                this.color=`hsl(${180+Math.random()*60},100%,${50+Math.random()*30}%)`;
+            }
+            update(){
+                this.x+=this.speedX;
+                this.y+=this.speedY;
+                if(this.x>canvas.width)this.x=0;
+                if(this.x<0)this.x=canvas.width;
+                if(this.y>canvas.height)this.y=0;
+                if(this.y<0)this.y=canvas.height;
+            }
+            draw(){
+                ctx.fillStyle=this.color;
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+                ctx.fill();
+            }
         }
-    ];
-    
-    // Simulate API delay
-    setTimeout(() => {
-        renderIBMNews(mockUpdates);
-    }, 1500);
-}
+        function init(){
+            for(let i=0;i<particleCount;i++){
+                particles.push(new Particle());
+            }
+        }
+        function animateParticles(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p=>{
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        init();
+        animateParticles();
 
-// Countdown timer
-function updateCountdown(){
-    const minutes = Math.floor(countdown / 60);
-    const seconds = countdown % 60;
-    countdownEl.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-    
-    if(countdown > 0){
-        countdown--;
-    } else {
-        countdown = 30 * 60; // Reset to 30 minutes
+        // CUSTOM CURSOR
+        const cursor=document.querySelector('.cursor');
+        const cursorDot=document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove',(e)=>{
+            cursor.style.left=e.clientX-10+'px';
+            cursor.style.top=e.clientY-10+'px';
+            cursorDot.style.left=e.clientX-2+'px';
+            cursorDot.style.top=e.clientY-2+'px';
+        });
+
+        // HEADER HIDE/SHOW
+        let lastScroll=0;
+        window.addEventListener('scroll',()=>{
+            const currentScroll=window.pageYOffset;
+            const header=document.querySelector('header');
+            if(currentScroll>lastScroll){
+                header.style.transform='translateY(-100%)';
+            }else{
+                header.style.transform='translateY(0)';
+            }
+            lastScroll=currentScroll;
+        });
+
+        /*  IBM QUANTUM NEWS  */
+        const ibmNewsContainer = document.getElementById('ibm-news-container');
+        const ibmLoader = document.getElementById('ibmLoader');
+        const countdownEl = document.getElementById('countdown');
+        let countdown = 30 * 60;
+
+        function renderIBMNews(updates){
+            ibmLoader.style.display='none';
+            ibmNewsContainer.innerHTML='';
+            updates.forEach(update=>{
+                const card=document.createElement('div');
+                card.className='quantum-update-card';
+                card.innerHTML=`
+                    <div class="update-time">${new Date(update.timestamp).toLocaleString()}</div>
+                    <div class="update-title">${update.title}</div>
+                    <div class="update-description">${update.description}</div>
+                `;
+                ibmNewsContainer.appendChild(card);
+            });
+        }
+
+        function fetchIBMQuantumNews(){
+            ibmLoader.style.display='block';
+            const mockUpdates = [
+                {
+                    timestamp: new Date().toISOString(),
+                    title: 'IBM Quantum Network Expands',
+                    description: 'IBM announces new quantum computing partnerships with leading research institutions worldwide.'
+                },
+                {
+                    timestamp: new Date(Date.now() - 30*60*1000).toISOString(),
+                    title: 'Qiskit Runtime Updates',
+                    description: 'New Qiskit Runtime features enable 100x faster quantum circuit execution.'
+                },
+                {
+                    timestamp: new Date(Date.now() - 60*60*1000).toISOString(),
+                    title: 'Quantum Advantage Demonstrated',
+                    description: 'IBM quantum processors solve complex optimization problems beyond classical capabilities.'
+                }
+            ];
+            setTimeout(() => {
+                renderIBMNews(mockUpdates);
+            }, 1500);
+        }
+
+        function updateCountdown(){
+            const minutes = Math.floor(countdown / 60);
+            const seconds = countdown % 60;
+            countdownEl.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+            if(countdown > 0){
+                countdown--;
+            } else {
+                countdown = 30 * 60;
+                fetchIBMQuantumNews();
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
         fetchIBMQuantumNews();
-    }
-}
 
-// Update countdown every second
-setInterval(updateCountdown, 1000);
+        /*  QUANTUM VIDEO  */
+        function playQuantumVideo(){
+            const videoContainer = document.querySelector('.video-container iframe');
+            videoContainer.src += "?autoplay=1";
+        }
+        function playQuantumPlaylist(){
+            const playlistContainer = document.querySelector('.playlist-container iframe');
+            playlistContainer.src += "?autoplay=1";
+        }
 
-// Initial load
-fetchIBMQuantumNews();
+        /*  QUANTUM NETWORK MAP  */
+        (() => {
+            const container   = document.getElementById('mapContainer');
+            const canvas      = document.getElementById('quantumMapCanvas');
+            const ctx         = canvas.getContext('2d');
+            const tooltip     = document.getElementById('mapTooltip');
+            const nodeCountEl = document.getElementById('nodeCount');
+            const linkCountEl = document.getElementById('linkCount');
 
-/* ----------  QUANTUM VIDEO FUNCTIONS  ---------- */
-function playQuantumVideo(){
-    const videoContainer = document.querySelector('.video-container iframe');
-    videoContainer.src += "?autoplay=1";
-}
+            let W, H, nodes, links, autoRotate=true, rotX=0, rotY=0, rotSpeed=0.3;
 
-/* ----------  QUANTUM NETWORK MAP LOGIC  ---------- */
-(() => {
-    const container   = document.getElementById('mapContainer');
-    const canvas      = document.getElementById('quantumMapCanvas');
-    const ctx         = canvas.getContext('2d');
-    const tooltip     = document.getElementById('mapTooltip');
-    const nodeCountEl = document.getElementById('nodeCount');
-    const linkCountEl = document.getElementById('linkCount');
+            const Q_NODES = [
+                {name:'IBM Yorktown',       lat:41.3,  lon:-73.8, type:'hub'},
+                {name:'IBM Tokyo',          lat:35.7,  lon:139.7, type:'hub'},
+                {name:'IBM Zurich',         lat:47.4,  lon:8.5,   type:'hub'},
+                {name:'USTC Hefei',         lat:31.8,  lon:117.3, type:'hub'},
+                {name:'IQC Waterloo',       lat:43.5,  lon:-80.5, type:'hub'},
+                {name:'QuTech Delft',       lat:52.0,  lon:4.4,   type:'hub'},
+                {name:'Riken Wako',         lat:35.8,  lon:139.6, type:'hub'},
+                {name:'CAS Beijing',        lat:39.9,  lon:116.4, type:'hub'},
+                {name:'University Vienna',  lat:48.2,  lon:16.4,  type:'hub'},
+                {name:'CQT Singapore',      lat:1.3,   lon:103.8, type:'repeater'},
+                {name:'IQOQI Innsbruck',    lat:47.3,  lon:11.4,  type:'repeater'},
+                {name:'NIST Boulder',       lat:40.0,  lon:-105.3,type:'repeater'},
+                {name:'IQC Calgary',        lat:51.0,  lon:-114.1,type:'repeater'},
+                {name:'Oxford University',  lat:51.8,  lon:-1.3,  type:'repeater'},
+                {name:'MPI Garching',       lat:48.3,  lon:11.7,  type:'repeater'}
+            ];
 
-    let W, H, nodes, links, autoRotate=true, rotX=0, rotY=0, rotSpeed=0.3;
+            function resize(){ W=canvas.width=container.clientWidth; H=canvas.height=container.clientHeight; }
+            window.addEventListener('resize', ()=>{resize(); drawMap();});
+            resize();
 
-    /*  real-world quantum-network nodes  */
-    const Q_NODES = [
-        {name:'IBM Yorktown',       lat:41.3,  lon:-73.8, type:'hub'},
-        {name:'IBM Tokyo',          lat:35.7,  lon:139.7, type:'hub'},
-        {name:'IBM Zurich',         lat:47.4,  lon:8.5,   type:'hub'},
-        {name:'USTC Hefei',         lat:31.8,  lon:117.3, type:'hub'},
-        {name:'IQC Waterloo',       lat:43.5,  lon:-80.5, type:'hub'},
-        {name:'QuTech Delft',       lat:52.0,  lon:4.4,   type:'hub'},
-        {name:'Riken Wako',         lat:35.8,  lon:139.6, type:'hub'},
-        {name:'CAS Beijing',        lat:39.9,  lon:116.4, type:'hub'},
-        {name:'University Vienna',  lat:48.2,  lon:16.4,  type:'hub'},
-        {name:'CQT Singapore',      lat:1.3,   lon:103.8, type:'repeater'},
-        {name:'IQOQI Innsbruck',    lat:47.3,  lon:11.4,  type:'repeater'},
-        {name:'NIST Boulder',       lat:40.0,  lon:-105.3,type:'repeater'},
-        {name:'IQC Calgary',        lat:51.0,  lon:-114.1,type:'repeater'},
-        {name:'Oxford University',  lat:51.8,  lon:-1.3,  type:'repeater'},
-        {name:'MPI Garching',       lat:48.3,  lon:11.7,  type:'repeater'}
-    ];
+            function buildNetwork(){
+                nodes=Q_NODES.map((n,i)=>({
+                    id:i, name:n.name, lat:n.lat, lon:n.lon, type:n.type,
+                    x:0,y:0,z:0,
+                    fidelity:Math.random()*20+80,
+                    lastPulse:Date.now()
+                }));
+                links=[];
+                for(let i=0;i<nodes.length;i++){
+                    for(let j=i+1;j<nodes.length;j++){
+                        const d=Math.hypot(nodes[i].lat-nodes[j].lat, nodes[i].lon-nodes[j].lon);
+                        if(d<40||Math.random()<.25){
+                            links.push({src:nodes[i],dst:nodes[j], fid:Math.random()*15+80});
+                        }
+                    }
+                }
+                nodeCountEl.textContent=nodes.length;
+                linkCountEl.textContent=links.length;
+            }
 
-    function resize(){ W=canvas.width=container.clientWidth; H=canvas.height=container.clientHeight; }
-    window.addEventListener('resize', ()=>{resize(); drawMap();});
-    resize();
+            function project(n){
+                const cosX=Math.cos(rotX), sinX=Math.sin(rotX);
+                const cosY=Math.cos(rotY), sinY=Math.sin(rotY);
+                let x=n.lat-30, y=n.lon-30, z=20;
+                let yy=y*cosX - z*sinX; z=y*sinX + z*cosX; y=yy;
+                let xx=x*cosY + z*sinY; z=-x*sinY + z*cosY; x=xx;
+                n.x=x; n.y=y; n.z=z;
+                const scale=600/(z+200);
+                return {px:W/2+x*scale, py:H/2+y*scale, sc:scale};
+            }
 
-    /* ----------  build topology  ---------- */
-    function buildNetwork(){
-        nodes=Q_NODES.map((n,i)=>({
-            id:i, name:n.name, lat:n.lat, lon:n.lon, type:n.type,
-            x:0,y:0,z:0,
-            fidelity:Math.random()*20+80,  // 80-100
-            lastPulse:Date.now()
-        }));
-        links=[];
-        for(let i=0;i<nodes.length;i++){
-            for(let j=i+1;j<nodes.length;j++){
-                const d=Math.hypot(nodes[i].lat-nodes[j].lat, nodes[i].lon-nodes[j].lon);
-                if(d<40||Math.random()<.25){  // geographic or random entanglement
-                    links.push({src:nodes[i],dst:nodes[j], fid:Math.random()*15+80});
+            function drawMap(){
+                ctx.clearRect(0,0,W,H);
+                links.forEach(l=>{
+                    const p1=project(l.src), p2=project(l.dst);
+                    const fid=(l.fid+Math.random()*3-1.5).clamp(75,100);
+                    ctx.beginPath();
+                    ctx.moveTo(p1.px,p1.py); ctx.lineTo(p2.px,p2.py);
+                    ctx.lineWidth=fid/25;
+                    ctx.strokeStyle=fid>95?'#0f0':fid>80?'#ff0':'#f00';
+                    ctx.shadowBlur=10; ctx.shadowColor=ctx.strokeStyle;
+                    ctx.stroke(); ctx.shadowBlur=0;
+                });
+                nodes.forEach(n=>{
+                    const p=project(n);
+                    const r=n.type==='hub'?8:5;
+                    ctx.beginPath(); ctx.arc(p.px,p.py,r*p.sc,0,Math.PI*2);
+                    ctx.fillStyle=n.fid>95?'#0f0':n.fid>80?'#ff0':'#f00';
+                    ctx.fill();
+                    ctx.strokeStyle='#00ffff'; ctx.lineWidth=1; ctx.stroke();
+                });
+            }
+
+            let mouseX=0, mouseY=0;
+            canvas.addEventListener('mousemove',e=>{
+                const rect=canvas.getBoundingClientRect();
+                mouseX=e.clientX-rect.left; mouseY=e.clientY-rect.top;
+                let hit=null;
+                nodes.forEach(n=>{
+                    const p=project(n);
+                    if(Math.hypot(mouseX-p.px, mouseY-p.py)<10) hit=n;
+                });
+                if(hit){
+                    tooltip.innerHTML=`${hit.name}<br>Fidelity: ${hit.fid.toFixed(1)}%`;
+                    tooltip.style.left=mouseX+15+'px'; tooltip.style.top=mouseY-40+'px';
+                    tooltip.style.opacity=1;
+                }else tooltip.style.opacity=0;
+            });
+            document.getElementById('mapRotateBtn').addEventListener('click',e=>{
+                autoRotate=!autoRotate; e.target.classList.toggle('active');
+            });
+            document.getElementById('mapResetBtn').addEventListener('click',()=>{
+                rotX=0; rotY=0; drawMap();
+            });
+
+            function animate(){
+                if(autoRotate){ rotY+=rotSpeed*0.01; }
+                nodes.forEach(n=>n.fid+=(Math.random()-0.5)*0.3);
+                drawMap();
+                requestAnimationFrame(animate);
+            }
+
+            setInterval(()=>{
+                links.forEach(l=>l.fid+=(Math.random()-0.5)*0.5);
+            },30000);
+
+            Number.prototype.clamp=function(min,max){return Math.min(max,Math.max(min,this));};
+            buildNetwork(); animate();
+        })();
+
+        /*  TIC-TAC-TOE GAME LOGIC  */
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = 'X';
+        let gameActive = true;
+        let scores = { X: 0, O: 0, draw: 0 };
+
+        const winningConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        const cells = document.querySelectorAll('.cell');
+        const currentPlayerDisplay = document.getElementById('currentPlayer');
+
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleCellClick);
+        });
+
+        function handleCellClick(event) {
+            const clickedCell = event.target;
+            const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+
+            if (board[clickedCellIndex] !== '' || !gameActive) {
+                return;
+            }
+
+            handleCellPlayed(clickedCell, clickedCellIndex);
+            handleResultValidation();
+        }
+
+        function handleCellPlayed(clickedCell, clickedCellIndex) {
+            board[clickedCellIndex] = currentPlayer;
+            clickedCell.textContent = currentPlayer;
+            clickedCell.classList.add(currentPlayer.toLowerCase());
+            
+            // Add quantum effect
+            clickedCell.style.animation = 'none';
+            clickedCell.offsetHeight; // Trigger reflow
+            clickedCell.style.animation = 'quantumPlace 0.5s ease-out';
+        }
+
+        function handleResultValidation() {
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const winCondition = winningConditions[i];
+                let a = board[winCondition[0]];
+                let b = board[winCondition[1]];
+                let c = board[winCondition[2]];
+                
+                if (a === '' || b === '' || c === '') {
+                    continue;
+                }
+                
+                if (a === b && b === c) {
+                    roundWon = true;
+                    // Highlight winning cells
+                    winCondition.forEach(index => {
+                        cells[index].classList.add('winner');
+                    });
+                    break;
                 }
             }
-        }
-        nodeCountEl.textContent=nodes.length;
-        linkCountEl.textContent=links.length;
-    }
 
-    /* ----------  3-D projection  ---------- */
-    function project(n){
-        const cosX=Math.cos(rotX), sinX=Math.sin(rotX);
-        const cosY=Math.cos(rotY), sinY=Math.sin(rotY);
-        let x=n.lat-30, y=n.lon-30, z=20;
-        // rotate
-        let yy=y*cosX - z*sinX; z=y*sinX + z*cosX; y=yy;
-        let xx=x*cosY + z*sinY; z=-x*sinY + z*cosY; x=xx;
-        n.x=x; n.y=y; n.z=z;
-        const scale=600/(z+200);
-        return {px:W/2+x*scale, py:H/2+y*scale, sc:scale};
-    }
-
-    /* ----------  draw loop  ---------- */
-    function drawMap(){
-        ctx.clearRect(0,0,W,H);
-        // links first
-        links.forEach(l=>{
-            const p1=project(l.src), p2=project(l.dst);
-            const fid=(l.fid+Math.random()*3-1.5).clamp(75,100);
-            ctx.beginPath();
-            ctx.moveTo(p1.px,p1.py); ctx.lineTo(p2.px,p2.py);
-            ctx.lineWidth=fid/25;
-            ctx.strokeStyle=fid>95?'#0f0':fid>80?'#ff0':'#f00';
-            ctx.shadowBlur=10; ctx.shadowColor=ctx.strokeStyle;
-            ctx.stroke(); ctx.shadowBlur=0;
-        });
-        // nodes
-        nodes.forEach(n=>{
-            const p=project(n);
-            const r=n.type==='hub'?8:5;
-            ctx.beginPath(); ctx.arc(p.px,p.py,r*p.sc,0,Math.PI*2);
-            ctx.fillStyle=n.fid>95?'#0f0':n.fid>80?'#ff0':'#f00';
-            ctx.fill();
-            ctx.strokeStyle='#00ffff'; ctx.lineWidth=1; ctx.stroke();
-        });
-    }
-
-    /* ----------  animation & interaction  ---------- */
-    let mouseX=0, mouseY=0;
-    canvas.addEventListener('mousemove',e=>{
-        const rect=canvas.getBoundingClientRect();
-        mouseX=e.clientX-rect.left; mouseY=e.clientY-rect.top;
-        // hover test
-        let hit=null;
-        nodes.forEach(n=>{
-            const p=project(n);
-            if(Math.hypot(mouseX-p.px, mouseY-p.py)<10) hit=n;
-        });
-        if(hit){
-            tooltip.innerHTML=`${hit.name}<br>Fidelity: ${hit.fid.toFixed(1)}%`;
-            tooltip.style.left=mouseX+15+'px'; tooltip.style.top=mouseY-40+'px';
-            tooltip.style.opacity=1;
-        }else tooltip.style.opacity=0;
-    });
-    document.getElementById('mapRotateBtn').addEventListener('click',e=>{
-        autoRotate=!autoRotate; e.target.classList.toggle('active');
-    });
-    document.getElementById('mapResetBtn').addEventListener('click',()=>{
-        rotX=0; rotY=0; drawMap();
-    });
-
-    function animate(){
-        if(autoRotate){ rotY+=rotSpeed*0.01; }
-        // random drift
-        nodes.forEach(n=>n.fid+=(Math.random()-0.5)*0.3);
-        drawMap();
-        requestAnimationFrame(animate);
-    }
-
-    /* ----------  live update every 30 s  ---------- */
-    setInterval(()=>{
-        links.forEach(l=>l.fid+=(Math.random()-0.5)*0.5);
-    },30000);
-
-    /* ----------  init  ---------- */
-    Number.prototype.clamp=function(min,max){return Math.min(max,Math.max(min,this));};
-    buildNetwork(); animate();
-})();
-
-/* ----------  FUTURE GAMES INTERACTIVITY  ---------- */
-const dimensionBtns = document.querySelectorAll('#future-games .quantum-btn');
-const gameCards = document.querySelectorAll('.game-card');
-const gamePreview = document.getElementById('gamePreview');
-
-dimensionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        dimensionBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const dimension = btn.dataset.dimension;
-        gameCards.forEach(card => {
-            if (dimension === '3d' || card.dataset.dimension === dimension) {
-                card.classList.remove('hidden');
-                card.style.animation = 'fadeInUp 0.6s ease-out';
-            } else {
-                card.classList.add('hidden');
+            if (roundWon) {
+                currentPlayerDisplay.innerHTML = `Player ${currentPlayer} Wins! 🎉`;
+                scores[currentPlayer]++;
+                updateScoreboard();
+                gameActive = false;
+                playQuantumSound();
+                return;
             }
-        });
-        playQuantumSound();
-    });
-});
 
-gameCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        const gameName = card.querySelector('h3').textContent;
-        showGamePreview(gameName);
-    });
-});
+            let roundDraw = !board.includes('');
+            if (roundDraw) {
+                currentPlayerDisplay.innerHTML = 'Quantum Draw! ⚛️';
+                scores.draw++;
+                updateScoreboard();
+                gameActive = false;
+                return;
+            }
 
-function showGamePreview(gameName) {
-    gamePreview.innerHTML = `
-        <div class="preview-active">
-            <div class="quantum-loader"></div>
-            <h4>${gameName}</h4>
-            <p>Loading quantum preview...</p>
-            <div class="preview-hologram"></div>
-        </div>
-    `;
-    setTimeout(() => {
-        gamePreview.innerHTML = `
-            <div class="preview-active">
-                <div class="holo-scene">
-                    <div class="holo-object"></div>
-                    <div class="holo-grid"></div>
-                </div>
-                <p>Preview ready - click to play</p>
-            </div>
+            handlePlayerChange();
+        }
+
+        function handlePlayerChange() {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            currentPlayerDisplay.innerHTML = `Player ${currentPlayer}'s Turn`;
+            currentPlayerDisplay.className = `current-player player-${currentPlayer.toLowerCase()}`;
+        }
+
+        function updateScoreboard() {
+            document.getElementById('scoreX').textContent = scores.X;
+            document.getElementById('scoreO').textContent = scores.O;
+            document.getElementById('scoreDraw').textContent = scores.draw;
+        }
+
+        function resetGame() {
+            gameActive = true;
+            currentPlayer = 'X';
+            board = ['', '', '', '', '', '', '', '', ''];
+            currentPlayerDisplay.innerHTML = `Player ${currentPlayer}'s Turn`;
+            currentPlayerDisplay.className = 'current-player';
+            
+            cells.forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('x', 'o', 'winner');
+                cell.style.animation = '';
+            });
+            
+            playQuantumSound();
+        }
+
+        // Add CSS animation for cell placement
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes quantumPlace {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 0;
+                }
+                50% {
+                    transform: scale(1.2) rotate(180deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(1) rotate(360deg);
+                    opacity: 1;
+                }
+            }
         `;
-    }, 1500);
-}
+        document.head.appendChild(style);
 
-function playQuantumSound() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
-    oscillator.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.2);
-    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-    oscillator.start(audioCtx.currentTime);
-    oscillator.stop(audioCtx.currentTime + 0.3);
-}
+        /*  FUTURE GAMES INTERACTIVITY  */
+        const dimensionBtns = document.querySelectorAll('#future-games .quantum-btn');
+        const gameCards = document.querySelectorAll('.game-card');
+        const gamePreview = document.getElementById('gamePreview');
 
-// Mouse 3-D tilt on cards
-document.querySelectorAll('.ai-card, .game-card, .quantum-update-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const {left, top, width, height} = card.getBoundingClientRect();
-        const x = (e.clientX - left - width/2) / (width/2);
-        const y = (e.clientY - top - height/2) / (height/2);
-        card.style.transform = `perspective(1000px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(20px)`;
-    });
-    card.addEventListener('mouseleave', () => card.style.transform = '');
-});
+        dimensionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                dimensionBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const dimension = btn.dataset.dimension;
+                gameCards.forEach(card => {
+                    if (dimension === '3d' || card.dataset.dimension === dimension) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'fadeInUp 0.6s ease-out';
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                playQuantumSound();
+            });
+        });
 
-// Type-writer hero punch
-const heroTxt = document.querySelector('.hero h1');
-const txt = heroTxt.textContent;
-heroTxt.textContent = '';
-let i = 0;
-const type = () => {
-    if (i < txt.length) { heroTxt.textContent += txt[i++]; setTimeout(type, 45); }
-};
-setTimeout(type, 600);
+        gameCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const gameName = card.querySelector('h3').textContent;
+                showGamePreview(gameName);
+            });
+        });
 
-// Random qubit flicker
-setInterval(() => {
-    document.querySelectorAll('.qubit').forEach(q => {
-        if (Math.random() > .7) q.style.boxShadow = '0 0 30px #ff00ff';
-        else q.style.boxShadow = '0 0 20px #00ffff';
-    });
-}, 400);
-</script>
+        function showGamePreview(gameName) {
+            gamePreview.innerHTML = `
+                <div class="preview-active">
+                    <div class="quantum-loader"></div>
+                    <h4>${gameName}</h4>
+                    <p>Loading quantum preview...</p>
+                    <div class="preview-hologram"></div>
+                </div>
+            `;
+            setTimeout(() => {
+                gamePreview.innerHTML = `
+                    <div class="preview-active">
+                        <div class="holo-scene">
+                            <div class="holo-object"></div>
+                            <div class="holo-grid"></div>
+                        </div>
+                        <p>Preview ready - click to play</p>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        function playQuantumSound() {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+            oscillator.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.2);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + 0.3);
+        }
+
+        // Mouse 3-D tilt on cards
+        document.querySelectorAll('.ai-card, .game-card, .quantum-update-card, .cell').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const {left, top, width, height} = card.getBoundingClientRect();
+                const x = (e.clientX - left - width/2) / (width/2);
+                const y = (e.clientY - top - height/2) / (height/2);
+                card.style.transform = `perspective(1000px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(20px)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = '');
+        });
+
+        // Type-writer hero punch
+        const heroTxt = document.querySelector('.hero h1');
+        const txt = heroTxt.textContent;
+        heroTxt.textContent = '';
+        let i = 0;
+        const type = () => {
+            if (i < txt.length) { heroTxt.textContent += txt[i++]; setTimeout(type, 45); }
+        };
+        setTimeout(type, 600);
+
+        // Random qubit flicker
+        setInterval(() => {
+            document.querySelectorAll('.qubit').forEach(q => {
+                if (Math.random() > .7) q.style.boxShadow = '0 0 30px #ff00ff';
+                else q.style.boxShadow = '0 0 20px #00ffff';
+            });
+        }, 400);
+    </script>
 </body>
 </html>
