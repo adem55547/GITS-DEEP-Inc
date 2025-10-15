@@ -389,6 +389,212 @@
             font-weight:700;
         }
 
+        /*========== NEURAL CODE LAB STYLES ==========*/
+        .neural-lab{
+            background:radial-gradient(ellipse at center, #0a0e27 0%, var(--dark) 100%);
+            padding:100px 20px;
+            color:#fff;
+            font-family:'Orbitron','Segoe UI',sans-serif;
+        }
+        :root{
+          --fire:#ff4757;
+          --ice:#00d2d3;
+          --void:#5f27cd;
+          --earth:#2ed573;
+          --dark:#01020f;
+          --glow1:#00ffff80;
+          --glow2:#ff00ff80;
+        }
+        .neural-title{
+          position:relative;
+          font-size:clamp(2rem, 5vw, 3.5rem);
+          font-weight:900;
+          text-align:center;
+          letter-spacing:4px;
+          text-shadow:
+            0 0 5px var(--ice),
+            0 0 10px var(--ice),
+            0 0 20px var(--ice),
+            0 0 40px var(--glow1),
+            0 0 80px var(--glow1);
+        }
+        .neural-title::before,
+        .neural-title::after{
+          content:attr(data-text);
+          position:absolute;
+          top:0;left:0;
+          width:100%;height:100%;
+        }
+        .neural-title::before{
+          left:2px;
+          text-shadow:-2px 0 var(--glow1);
+          clip:rect(44px, 9999px, 56px, 0);
+          animation:glitch 1.2s infinite;
+        }
+        .neural-title::after{
+          left:-2px;
+          text-shadow:-2px 0 var(--glow2);
+          clip:rect(84px, 9999px, 96px, 0);
+          animation:glitch 1.5s infinite reverse;
+        }
+        @keyframes glitch{
+          0%{transform:translate(0)}
+          20%{transform:translate(-3px, 3px)}
+          40%{transform:translate(-3px, -3px)}
+          60%{transform:translate(3px, 3px)}
+          80%{transform:translate(3px, -3px)}
+          100%{transform:translate(0)}
+        }
+        .neural-sub{
+          text-align:center;
+          font-size:1.2rem;
+          color:var(--ice);
+          text-shadow:0 0 8px var(--ice);
+          margin-bottom:2rem;
+        }
+        .lab-grid{
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:30px;
+          max-width:1200px;
+          margin:auto;
+        }
+        @media(max-width:900px){.lab-grid{grid-template-columns:1fr;}}
+        .editor-panel{
+          background:rgba(13,17,23,.7);
+          border:1px solid var(--ice);
+          border-radius:15px;
+          display:flex;
+          flex-direction:column;
+          overflow:hidden;
+          backdrop-filter:blur(6px);
+          box-shadow:0 0 20px var(--ice);
+        }
+        .synapse-tabs{
+          display:flex;
+          border-bottom:1px solid var(--ice);
+        }
+        .syn-tab{
+          flex:1;
+          background:transparent;
+          border:none;
+          color:var(--ice);
+          padding:.7rem;
+          font-family:'Orbitron',sans-serif;
+          font-weight:500;
+          cursor:pointer;
+          transition:.3s;
+          position:relative;
+        }
+        .syn-tab.active{
+          color:#fff;
+          text-shadow:0 0 10px var(--ice);
+        }
+        .syn-tab::after{
+          content:'';
+          position:absolute;
+          bottom:0;left:50%;
+          width:0;height:2px;
+          background:var(--ice);
+          transition:.3s;
+          transform:translateX(-50%);
+        }
+        .syn-tab.active::after{width:80%;}
+        .code-area{flex:1;position:relative;}
+        .neural-editor{
+          width:100%;height:450px;
+          background:#010409;
+          color:#e6edf3;
+          border:none;
+          padding:1rem;
+          font-family:'Fira Code',monospace;
+          font-size:.95rem;
+          line-height:1.6;
+          resize:none;
+          caret-color:var(--fire);
+        }
+        .neural-editor:focus{outline:none;}
+        .hidden{display:none;}
+        .neural-controls{
+          display:flex;
+          gap:10px;
+          padding:.8rem;
+          background:rgba(0,0,0,.3);
+        }
+        .neural-btn{
+          flex:1;
+          background:transparent;
+          border:1px solid;
+          border-radius:30px;
+          padding:.6rem;
+          font-family:'Orbitron',sans-serif;
+          font-weight:600;
+          cursor:pointer;
+          transition:.3s;
+          position:relative;
+          overflow:hidden;
+        }
+        .neural-btn.fire{
+          color:var(--fire);
+          border-color:var(--fire);
+          box-shadow:0 0 8px var(--fire);
+        }
+        .neural-btn.fire:hover{
+          background:var(--fire);
+          color:#000;
+          box-shadow:0 0 25px var(--fire);
+        }
+        .neural-btn.ice{
+          color:var(--ice);
+          border-color:var(--ice);
+          box-shadow:0 0 8px var(--ice);
+        }
+        .neural-btn.ice:hover{
+          background:var(--ice);
+          color:#000;
+          box-shadow:0 0 25px var(--ice);
+        }
+        .neural-btn.void{
+          color:var(--void);
+          border-color:var(--void);
+          box-shadow:0 0 8px var(--void);
+        }
+        .neural-btn.void:hover{
+          background:var(--void);
+          color:#fff;
+          box-shadow:0 0 25px var(--void);
+        }
+        .neural-btn.earth{
+          color:var(--earth);
+          border-color:var(--earth);
+          box-shadow:0 0 8px var(--earth);
+        }
+        .neural-btn.earth:hover{
+          background:var(--earth);
+          color:#000;
+          box-shadow:0 0 25px var(--earth);
+        }
+        .preview-panel{
+          position:relative;
+          background:#000;
+          border:1px solid var(--fire);
+          border-radius:15px;
+          overflow:hidden;
+          box-shadow:0 0 25px var(--fire);
+        }
+        #neuralCanvas{
+          position:absolute;
+          top:0;left:0;
+          width:100%;height:100%;
+          pointer-events:none;
+        }
+        #liveFrame{
+          width:100%;height:450px;
+          border:none;
+          background:#fff;
+          transition:opacity .4s;
+        }
+
         /*========== FOOTER ==========*/
         footer{text-align:center;padding:40px 20px;color:#556;font-size:1rem;}
 
@@ -423,6 +629,7 @@
                 <li><a href="#sci-fi">Sci-Fi Lab</a></li>
                 <li><a href="#future-games">Future Games</a></li>
                 <li><a href="#tic-tac-toe">Quantum XO</a></li>
+                <li><a href="#software-lab">Neural Code Lab</a></li>
                 <li><a href="#holo-show">Holo-Show</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -772,6 +979,42 @@
                         <p>Choose a game to see real-time preview</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!--========== NEURAL CODE LAB ==========-->
+    <section id="software-lab" class="neural-lab">
+        <h2 class="neural-title" data-text="Neural Code Lab">Neural Code Lab</h2>
+        <p class="neural-sub">Write your code and watch the neural grid bring it to life</p>
+
+        <div class="lab-grid">
+            <!-- ===== Code Editor ===== -->
+            <div class="editor-panel">
+                <div class="synapse-tabs">
+                    <button class="syn-tab active" data-lang="html">HTML</button>
+                    <button class="syn-tab" data-lang="css">CSS</button>
+                    <button class="syn-tab" data-lang="js">JS</button>
+                </div>
+
+                <div class="code-area">
+                    <textarea id="htmlCode" class="neural-editor" placeholder="<!-- Start here -->"></textarea>
+                    <textarea id="cssCode" class="neural-editor hidden" placeholder="/* Styles */"></textarea>
+                    <textarea id="jsCode" class="neural-editor hidden" placeholder="// Logic"></textarea>
+                </div>
+
+                <div class="neural-controls">
+                    <button class="neural-btn fire" id="runBtn">Launch Code</button>
+                    <button class="neural-btn ice" id="saveBtn">Save to Memory</button>
+                    <button class="neural-btn void" id="clearBtn">Erase Synapses</button>
+                    <button class="neural-btn earth" id="zipBtn">Download ZIP</button>
+                </div>
+            </div>
+
+            <!-- ===== Live Preview ===== -->
+            <div class="preview-panel">
+                <canvas id="neuralCanvas"></canvas>
+                <iframe id="liveFrame" title="live preview"></iframe>
             </div>
         </div>
     </section>
@@ -1297,6 +1540,164 @@
                 else q.style.boxShadow = '0 0 20px #00ffff';
             });
         }, 400);
+
+        /* ================== Neural Canvas Script (no rotation) ================== */
+        /* ---------- Resize ---------- */
+        const neuralCanvas = document.getElementById('neuralCanvas');
+        const neuralCtx    = neuralCanvas.getContext('2d');
+        function resizeNeuralCanvas(){
+          neuralCanvas.width  = neuralCanvas.offsetWidth;
+          neuralCanvas.height = neuralCanvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeNeuralCanvas);
+        resizeNeuralCanvas();
+
+        /* ---------- Nodes & Connections ---------- */
+        const neuralNodes = [];
+        const neuralConns = [];
+        const neuralNodeCount = 50;
+
+        for(let i=0;i<neuralNodeCount;i++){
+          neuralNodes.push({
+            x:Math.random()*neuralCanvas.width,
+            y:Math.random()*neuralCanvas.height,
+            vx:(Math.random()-.5)*.3,
+            vy:(Math.random()-.5)*.3,
+            r:Math.random()*1.5+1,
+            pulse:Math.random()*Math.PI*2
+          });
+        }
+        for(let i=0;i<neuralNodes.length;i++){
+          for(let j=i+1;j<neuralNodes.length;j++){
+            if(Math.hypot(neuralNodes[i].x-neuralNodes[j].x, neuralNodes[i].y-neuralNodes[j].y) < 130){
+              neuralConns.push({a:neuralNodes[i], b:neuralNodes[j]});
+            }
+          }
+        }
+
+        /* ---------- Draw Neural Network ---------- */
+        function drawNeural(){
+          neuralCtx.clearRect(0,0,neuralCanvas.width,neuralCanvas.height);
+          // Draw connections
+          neuralConns.forEach(c=>{
+            neuralCtx.beginPath();
+            neuralCtx.moveTo(c.a.x, c.a.y);
+            neuralCtx.lineTo(c.b.x, c.b.y);
+            neuralCtx.strokeStyle = 'rgba(0,255,255,0.18)';
+            neuralCtx.lineWidth = 1;
+            neuralCtx.stroke();
+          });
+          // Draw nodes
+          neuralNodes.forEach(n=>{
+            n.x += n.vx;
+            n.y += n.vy;
+            n.pulse += 0.02;
+            if(n.x < 0 || n.x > neuralCanvas.width) n.vx *= -1;
+            if(n.y < 0 || n.y > neuralCanvas.height) n.vy *= -1;
+            neuralCtx.beginPath();
+            neuralCtx.arc(n.x, n.y, n.r + Math.sin(n.pulse)*.5, 0, Math.PI*2);
+            neuralCtx.fillStyle = 'rgba(0,255,255,0.85)';
+            neuralCtx.shadowBlur = 12;
+            neuralCtx.shadowColor = '#00ffff';
+            neuralCtx.fill();
+            neuralCtx.shadowBlur = 0;
+          });
+          requestAnimationFrame(drawNeural);
+        }
+        drawNeural();
+
+        /* ================== Editor Logic (English) ================== */
+        /* ---------- Elements ---------- */
+        const neuralTabs      = document.querySelectorAll('.syn-tab');
+        const neuralHtmlEd    = document.getElementById('htmlCode');
+        const neuralCssEd     = document.getElementById('cssCode');
+        const neuralJsEd      = document.getElementById('jsCode');
+        const neuralRunBtn    = document.getElementById('runBtn');
+        const neuralSaveBtn   = document.getElementById('saveBtn');
+        const neuralClearBtn  = document.getElementById('clearBtn');
+        const neuralZipBtn    = document.getElementById('zipBtn');
+        const neuralLiveFrame = document.getElementById('liveFrame');
+
+        /* ---------- Tab Switch ---------- */
+        neuralTabs.forEach(t=>t.addEventListener('click',()=>{
+          neuralTabs.forEach(x=>x.classList.remove('active'));
+          document.querySelectorAll('.neural-editor').forEach(e=>e.classList.add('hidden'));
+          t.classList.add('active');
+          document.getElementById(t.dataset.lang+'Code').classList.remove('hidden');
+        }));
+
+        /* ---------- Live Launch ---------- */
+        function launchNeuralCode(){
+          const html = neuralHtmlEd.value || '';
+          const css  = neuralCssEd.value  || '';
+          const js   = neuralJsEd.value   || '';
+
+          const blob = new Blob([`
+            <!doctype html>
+            <html>
+              <head>
+                <meta charset="utf-8">
+                <style>${css}</style>
+              </head>
+              <body>${html}
+                <script>${js}<\/script>
+              </body>
+            </html>
+          `], {type:'text/html'});
+
+          neuralLiveFrame.src = URL.createObjectURL(blob);
+
+          /* flicker effect */
+          neuralLiveFrame.style.opacity = 0;
+          setTimeout(()=>neuralLiveFrame.style.opacity = 1, 200);
+        }
+        neuralRunBtn.addEventListener('click', launchNeuralCode);
+
+        /* ---------- Save / Load ---------- */
+        function saveToNeuralMemory(){
+          const payload = {html:neuralHtmlEd.value, css:neuralCssEd.value, js:neuralJsEd.value};
+          localStorage.setItem('neuralLab', JSON.stringify(payload));
+          alert('Code stored in neural memory');
+        }
+        function loadFromNeuralMemory(){
+          const data = localStorage.getItem('neuralLab');
+          if(!data) return;
+          const p = JSON.parse(data);
+          neuralHtmlEd.value = p.html || '';
+          neuralCssEd.value  = p.css  || '';
+          neuralJsEd.value   = p.js   || '';
+        }
+        neuralSaveBtn.addEventListener('click', saveToNeuralMemory);
+        window.addEventListener('DOMContentLoaded', ()=>{loadFromNeuralMemory(); launchNeuralCode();});
+
+        /* ---------- Clear ---------- */
+        neuralClearBtn.addEventListener('click',()=>{
+          neuralHtmlEd.value = neuralCssEd.value = neuralJsEd.value = '';
+          launchNeuralCode();
+        });
+
+        /* ---------- ZIP Export ---------- */
+        neuralZipBtn.addEventListener('click',()=>{
+          if(typeof JSZip === 'undefined'){
+            const s = document.createElement('script');
+            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+            s.onload = ()=>createNeuralZip();
+            document.head.appendChild(s);
+          }else createNeuralZip();
+
+          function createNeuralZip(){
+            const zip = new JSZip();
+            zip.file('index.html', neuralHtmlEd.value || '');
+            zip.file('style.css',  neuralCssEd.value  || '');
+            zip.file('script.js',  neuralJsEd.value   || '');
+            zip.generateAsync({type:'blob'}).then(b=>{
+              const a = document.createElement('a');
+              a.href = URL.createObjectURL(b);
+              a.download = 'neural-lab.zip';
+              a.click();
+            });
+          }
+        });
     </script>
 </body>
 </html>
