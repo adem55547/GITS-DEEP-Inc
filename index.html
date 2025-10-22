@@ -1215,6 +1215,133 @@
                 right: -1rem;
             }
         }
+
+        /* Updates UI */
+        .last-updated-badge {
+            margin-left: 1rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 9999px;
+            background: rgba(30, 58, 138, 0.2);
+            white-space: nowrap;
+        }
+
+        .hidden { display: none !important; }
+
+        .nav-link#updates-nav-link { position: relative; padding-right: 1.25rem; }
+        .update-dot {
+            position: absolute;
+            top: 6px;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22d3ee;
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.8);
+            transform: scale(0);
+            transition: transform 0.2s ease-out;
+        }
+        .update-dot.active { transform: scale(1); }
+
+        #updates {
+            padding: 5rem 1rem;
+            background: #000;
+            position: relative;
+        }
+        .updates-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, #000, rgba(59, 130, 246, 0.08), #000);
+        }
+        .timeline {
+            position: relative;
+            margin-top: 2rem;
+            padding-left: 1.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0.5rem;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(59,130,246,0.3), rgba(6,182,212,0.3));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+        .timeline-bullet {
+            position: absolute;
+            left: -0.15rem;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+        .timeline-card {
+            background: linear-gradient(135deg, #111827 0%, #000 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+        }
+        .timeline-title {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .timeline-meta {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            padding: 0.15rem 0.5rem;
+            border: 1px solid rgba(59,130,246,0.3);
+            color: #93c5fd;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background: rgba(59,130,246,0.08);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 1.25rem;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(17, 24, 39, 0.95);
+            color: #e5e7eb;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(59,130,246,0.3);
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            display: none;
+            z-index: 2000;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .toast.show { display: flex; animation: slideUp 0.25s ease-out; }
+        .toast-message { margin-right: 0.75rem; }
+        .toast-actions { display: flex; gap: 0.5rem; }
+        .toast-btn {
+            padding: 0.4rem 0.7rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(59,130,246,0.4);
+            background: rgba(59,130,246,0.15);
+            color: #bfdbfe;
+            cursor: pointer;
+        }
+        .toast-btn.primary { background: linear-gradient(135deg, #3b82f6, #06b6d4); color: #fff; border-color: transparent; }
     </style>
 </head>
 <body>
@@ -1257,8 +1384,10 @@
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#updates" class="nav-link" id="updates-nav-link">Updates<span class="update-dot"></span></a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
+            <span id="last-updated-badge" class="last-updated-badge hidden" title="Last site updates refresh">Updated just now</span>
             <button class="mobile-menu-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="3" y1="12" x2="21" y2="12"/>
@@ -1597,6 +1726,23 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section id="updates">
+        <div class="updates-bg"></div>
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Updates</h2>
+                <p class="section-subtitle">
+                    Live change log of improvements and announcements
+                </p>
+                <p id="updates-last-refreshed" class="section-subtitle" style="margin-top: 0.5rem; font-size: 0.9rem; color: #60a5fa;">
+                    Last refreshed: just now
+                </p>
+            </div>
+            <div id="updates-timeline" class="timeline"></div>
         </div>
     </section>
 
@@ -2015,6 +2161,173 @@
                 chatContainer.classList.add('active');
             }
         }, 5000);
+
+        // =============================
+        // Updates: fetch, render, poll
+        // =============================
+        const updatesTimeline = document.getElementById('updates-timeline');
+        const updatesLastRefreshed = document.getElementById('updates-last-refreshed');
+        const updatesNavLinkDot = document.querySelector('#updates-nav-link .update-dot');
+        const lastUpdatedBadge = document.getElementById('last-updated-badge');
+
+        let latestUpdateTimestamp = null;
+        let lastSeenUpdateTimestamp = localStorage.getItem('lastSeenUpdateTs');
+
+        function formatRelativeTime(iso) {
+            const date = new Date(iso);
+            const diffMs = Date.now() - date.getTime();
+            const minutes = Math.floor(diffMs / 60000);
+            if (minutes < 1) return 'just now';
+            if (minutes < 60) return `${minutes}m ago`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours}h ago`;
+            const days = Math.floor(hours / 24);
+            return `${days}d ago`;
+        }
+
+        function renderUpdates(updates) {
+            updatesTimeline.innerHTML = '';
+            updates.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'timeline-item';
+                el.innerHTML = `
+                    <div class="timeline-bullet"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">${item.title}</div>
+                        <div class="timeline-meta">
+                            <span>${new Date(item.timestamp).toLocaleString()}</span>
+                            <span>•</span>
+                            <span>${formatRelativeTime(item.timestamp)}</span>
+                            ${Array.isArray(item.tags) ? item.tags.map(t => `<span class="tag">${t}</span>`).join('') : ''}
+                        </div>
+                        <p class="service-description">${item.description || ''}</p>
+                    </div>
+                `;
+                updatesTimeline.appendChild(el);
+            });
+        }
+
+        function showToast(message, { actionText, onAction, dismissText = 'Dismiss' } = {}) {
+            let toast = document.getElementById('toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.className = 'toast';
+                toast.innerHTML = `
+                    <span class="toast-message"></span>
+                    <div class="toast-actions"></div>
+                `;
+                document.body.appendChild(toast);
+            }
+            toast.querySelector('.toast-message').textContent = message;
+            const actions = toast.querySelector('.toast-actions');
+            actions.innerHTML = '';
+            if (actionText && typeof onAction === 'function') {
+                const btn = document.createElement('button');
+                btn.className = 'toast-btn primary';
+                btn.textContent = actionText;
+                btn.addEventListener('click', () => { onAction(); hideToast(); });
+                actions.appendChild(btn);
+            }
+            const dismissBtn = document.createElement('button');
+            dismissBtn.className = 'toast-btn';
+            dismissBtn.textContent = dismissText;
+            dismissBtn.addEventListener('click', hideToast);
+            actions.appendChild(dismissBtn);
+            toast.classList.add('show');
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            if (toast) toast.classList.remove('show');
+        }
+
+        async function fetchUpdates({ silent = false } = {}) {
+            try {
+                const res = await fetch('updates.json', { cache: 'no-cache' });
+                if (!res.ok) throw new Error('Failed to load updates');
+                const data = await res.json();
+                const items = Array.isArray(data.items) ? data.items : [];
+                items.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                renderUpdates(items);
+
+                if (items[0]) {
+                    latestUpdateTimestamp = items[0].timestamp;
+                    const tsText = formatRelativeTime(data.generatedAt || latestUpdateTimestamp);
+                    updatesLastRefreshed.textContent = `Last refreshed: ${tsText}`;
+                    if (lastUpdatedBadge) {
+                        lastUpdatedBadge.textContent = `Updated ${tsText}`;
+                        lastUpdatedBadge.classList.remove('hidden');
+                    }
+
+                    const hasNew = !lastSeenUpdateTimestamp || new Date(latestUpdateTimestamp) > new Date(lastSeenUpdateTimestamp);
+                    if (hasNew && updatesNavLinkDot) updatesNavLinkDot.classList.add('active');
+                    if (hasNew && !silent) {
+                        showToast('New updates available', {
+                            actionText: 'View',
+                            onAction: () => { document.querySelector('#updates')?.scrollIntoView({ behavior: 'smooth' }); }
+                        });
+                    }
+                }
+            } catch (e) {
+                if (!silent) showToast('Could not refresh updates.');
+            }
+        }
+
+        // Poll every 30s
+        fetchUpdates({ silent: true });
+        setInterval(() => fetchUpdates({ silent: true }), 30000);
+
+        // Mark updates as seen when visiting the Updates section
+        const updatesSection = document.getElementById('updates');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && latestUpdateTimestamp) {
+                    localStorage.setItem('lastSeenUpdateTs', latestUpdateTimestamp);
+                    lastSeenUpdateTimestamp = latestUpdateTimestamp;
+                    if (updatesNavLinkDot) updatesNavLinkDot.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+        if (updatesSection) observer.observe(updatesSection);
+
+        // Service Worker registration for update prompts
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const reg = await navigator.serviceWorker.register('/sw.js');
+                    // Listen for waiting worker to prompt reload
+                    function promptRefresh(worker) {
+                        showToast('A new version is available', {
+                            actionText: 'Refresh',
+                            onAction: () => {
+                                worker.postMessage({ type: 'SKIP_WAITING' });
+                            }
+                        });
+                    }
+                    if (reg.waiting) {
+                        promptRefresh(reg.waiting);
+                    }
+                    reg.addEventListener('updatefound', () => {
+                        const newWorker = reg.installing;
+                        if (!newWorker) return;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                promptRefresh(newWorker);
+                            }
+                        });
+                    });
+                    let refreshing = false;
+                    navigator.serviceWorker.addEventListener('controllerchange', () => {
+                        if (refreshing) return;
+                        refreshing = true;
+                        window.location.reload();
+                    });
+                } catch (err) {
+                    // no-op
+                }
+            });
+        }
     </script>
 </body>
 </html>
